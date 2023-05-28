@@ -17,7 +17,6 @@ import { trackEvent } from "../../analytics";
 import throttle from "lodash.throttle";
 import { newElementWith } from "../../element/mutateElement";
 import { BroadcastedExcalidrawElement } from "./reconciliation";
-import { encryptData } from "../../data/encryption";
 import { PRECEDING_ELEMENT_KEY } from "../../constants";
 
 class Portal {
@@ -25,17 +24,15 @@ class Portal {
   socket: SocketIOClient.Socket | null = null;
   socketInitialized: boolean = false; // we don't want the socket to emit any updates until it is fully initialized
   roomId: string | null = null;
-  roomKey: string | null = null;
   broadcastedElementVersions: Map<string, number> = new Map();
 
   constructor(collab: TCollabClass) {
     this.collab = collab;
   }
 
-  open(socket: SocketIOClient.Socket, id: string, key: string) {
+  open(socket: SocketIOClient.Socket, id: string) {
     this.socket = socket;
     this.roomId = id;
-    this.roomKey = key;
 
     // Initialize socket listeners
     this.socket.on("init-room", () => {
@@ -66,7 +63,6 @@ class Portal {
     this.socket.close();
     this.socket = null;
     this.roomId = null;
-    this.roomKey = null;
     this.socketInitialized = false;
     this.broadcastedElementVersions = new Map();
   }
@@ -75,8 +71,7 @@ class Portal {
     return !!(
       this.socketInitialized &&
       this.socket &&
-      this.roomId &&
-      this.roomKey
+      this.roomId
     );
   }
 
@@ -87,13 +82,11 @@ class Portal {
     if (this.isOpen()) {
       const json = JSON.stringify(data);
       const encoded = new TextEncoder().encode(json);
-      const { encryptedBuffer, iv } = await encryptData(this.roomKey!, encoded);
 
       this.socket?.emit(
         volatile ? WS_EVENTS.SERVER_VOLATILE : WS_EVENTS.SERVER,
         this.roomId,
-        encryptedBuffer,
-        iv,
+        Array.from(encoded)
       );
     }
   }

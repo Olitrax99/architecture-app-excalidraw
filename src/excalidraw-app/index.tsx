@@ -68,11 +68,10 @@ import {
 } from "./data/localStorage";
 import CustomStats from "./CustomStats";
 import { restore, restoreAppState, RestoredDataState } from "../data/restore";
-import { ExportToExcalidrawPlus } from "./components/ExportToExcalidrawPlus";
 import { updateStaleImageStatuses } from "./data/FileManager";
 import { newElementWith } from "../element/mutateElement";
 import { isInitializedImageElement } from "../element/typeChecks";
-import { loadFilesFromFirebase } from "./data/firebase";
+import { storage } from "./data/storageConfig";
 import { LocalData } from "./data/LocalData";
 import { isBrowserStorageStateNewer } from "./data/tabSync";
 import clsx from "clsx";
@@ -102,8 +101,8 @@ const initializeScene = async (opts: {
   excalidrawAPI: ExcalidrawImperativeAPI;
 }): Promise<
   { scene: ExcalidrawInitialDataState | null } & (
-    | { isExternalScene: true; id: string; key: string }
-    | { isExternalScene: false; id?: null; key?: null }
+    | { isExternalScene: true; id: string; }
+    | { isExternalScene: false; id?: null; }
   )
 > => {
   const searchParams = new URLSearchParams(window.location.search);
@@ -214,7 +213,6 @@ const initializeScene = async (opts: {
       },
       isExternalScene: true,
       id: roomLinkData.roomId,
-      key: roomLinkData.roomKey,
     };
   } else if (scene) {
     return isExternalScene && jsonBackendMatch
@@ -222,7 +220,6 @@ const initializeScene = async (opts: {
           scene,
           isExternalScene,
           id: jsonBackendMatch[1],
-          key: jsonBackendMatch[2],
         }
       : { scene, isExternalScene: false };
   }
@@ -309,9 +306,8 @@ const ExcalidrawWrapper = () => {
           }, [] as FileId[]) || [];
 
         if (data.isExternalScene) {
-          loadFilesFromFirebase(
+          storage.loadFiles(
             `${FIREBASE_STORAGE_PREFIXES.shareLinkFiles}/${data.id}`,
-            data.key,
             fileIds,
           ).then(({ loadedFiles, erroredFiles }) => {
             excalidrawAPI.addFiles(loadedFiles);
@@ -622,22 +618,6 @@ const ExcalidrawWrapper = () => {
             toggleTheme: true,
             export: {
               onExportToBackend,
-              renderCustomUI: (elements, appState, files) => {
-                return (
-                  <ExportToExcalidrawPlus
-                    elements={elements}
-                    appState={appState}
-                    files={files}
-                    onError={(error) => {
-                      excalidrawAPI?.updateScene({
-                        appState: {
-                          errorMessage: error.message,
-                        },
-                      });
-                    }}
-                  />
-                );
-              },
             },
           },
         }}

@@ -91,7 +91,6 @@ const RoomDialog = ({
         {!activeRoomLink && (
           <>
             <p>{t("roomDialog.desc_intro")}</p>
-            <p>{`🔒 ${t("roomDialog.desc_privacy")}`}</p>
             <div className="RoomDialog-sessionStartButtonContainer">
               <DialogActionButton
                 label={t("roomDialog.button_startSession")}
@@ -154,13 +153,6 @@ const RoomDialog = ({
                 }
               />
             </div>
-            <p>
-              <span role="img" aria-hidden="true" className="RoomDialog-emoji">
-                {"🔒"}
-              </span>
-              {t("roomDialog.desc_privacy")}
-            </p>
-            <p>{t("roomDialog.desc_exitSession")}</p>
             <div className="RoomDialog-sessionStartButtonContainer">
               <DialogActionButton
                 actionType="danger"

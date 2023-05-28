@@ -175,11 +175,9 @@ export class FileManager {
 export const encodeFilesForUpload = async ({
   files,
   maxBytes,
-  encryptionKey,
 }: {
   files: Map<FileId, BinaryFileData>;
   maxBytes: number;
-  encryptionKey: string;
 }) => {
   const processedFiles: {
     id: FileId;
@@ -188,16 +186,6 @@ export const encodeFilesForUpload = async ({
 
   for (const [id, fileData] of files) {
     const buffer = new TextEncoder().encode(fileData.dataURL);
-
-    const encodedFile = await compressData<BinaryFileMetadata>(buffer, {
-      encryptionKey,
-      metadata: {
-        id,
-        mimeType: fileData.mimeType,
-        created: Date.now(),
-        lastRetrieved: Date.now(),
-      },
-    });
 
     if (buffer.byteLength > maxBytes) {
       throw new Error(
@@ -209,7 +197,7 @@ export const encodeFilesForUpload = async ({
 
     processedFiles.push({
       id,
-      buffer: encodedFile,
+      buffer: buffer,
     });
   }
 

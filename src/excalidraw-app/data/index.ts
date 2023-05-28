@@ -24,7 +24,7 @@ import {
   ROOM_ID_BYTES,
 } from "../app_constants";
 import { encodeFilesForUpload } from "./FileManager";
-import { saveFilesToFirebase } from "./firebase";
+import { storage } from "./storageConfig";
 
 export type SyncableExcalidrawElement = ExcalidrawElement & {
   _brand: "SyncableExcalidrawElement";
@@ -134,7 +134,7 @@ export type SocketUpdateData =
     _brand: "socketUpdateData";
   };
 
-const RE_COLLAB_LINK = /^#room=([a-zA-Z0-9_-]+),([a-zA-Z0-9_-]+)$/;
+const RE_COLLAB_LINK = /^#room=([a-zA-Z0-9_-]+)$/;
 
 export const isCollaborationLink = (link: string) => {
   const hash = new URL(link).hash;
@@ -144,29 +144,18 @@ export const isCollaborationLink = (link: string) => {
 export const getCollaborationLinkData = (link: string) => {
   const hash = new URL(link).hash;
   const match = hash.match(RE_COLLAB_LINK);
-  if (match && match[2].length !== 22) {
-    window.alert(t("alerts.invalidEncryptionKey"));
-    return null;
-  }
-  return match ? { roomId: match[1], roomKey: match[2] } : null;
+  return match ? { roomId: match[1] } : null;
 };
 
 export const generateCollaborationLinkData = async () => {
   const roomId = await generateRoomId();
-  const roomKey = await generateEncryptionKey();
-
-  if (!roomKey) {
-    throw new Error("Couldn't generate room key");
-  }
-
-  return { roomId, roomKey };
+  return { roomId };
 };
 
 export const getCollaborationLink = (data: {
   roomId: string;
-  roomKey: string;
 }) => {
-  return `${window.location.origin}${window.location.pathname}#room=${data.roomId},${data.roomKey}`;
+  return `${window.location.origin}${window.location.pathname}#room=${data.roomId}`;
 };
 
 /**
@@ -306,7 +295,6 @@ export const exportToBackend = async (
 
     const filesToUpload = await encodeFilesForUpload({
       files: filesMap,
-      encryptionKey,
       maxBytes: FILE_UPLOAD_MAX_BYTES,
     });
 
@@ -322,7 +310,7 @@ export const exportToBackend = async (
       url.hash = `json=${json.id},${encryptionKey}`;
       const urlString = url.toString();
 
-      await saveFilesToFirebase({
+      await storage.storeFiles({
         prefix: `/files/shareLinks/${json.id}`,
         files: filesToUpload,
       });
