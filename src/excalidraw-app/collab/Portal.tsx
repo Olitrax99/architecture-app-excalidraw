@@ -11,6 +11,8 @@ import {
   WS_EVENTS,
   FILE_UPLOAD_TIMEOUT,
   WS_SCENE_EVENT_TYPES,
+  SESSION_COOKIE,
+  STORAGE_KEYS,
 } from "../app_constants";
 import { UserIdleState } from "../../types";
 import { trackEvent } from "../../analytics";
@@ -33,6 +35,12 @@ class Portal {
   open(socket: SocketIOClient.Socket, id: string) {
     this.socket = socket;
     this.roomId = id;
+
+    this.socket.on("authenticated", (username: string) => {
+      document.cookie = SESSION_COOKIE + "=" + socket.id + "; expires=; path=/";
+      console.debug("Setting username to " + username)
+      this.collab.onUsernameChange(username);
+    });
 
     // Initialize socket listeners
     this.socket.on("init-room", () => {

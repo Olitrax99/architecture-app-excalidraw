@@ -119,6 +119,7 @@ const initializeScene = async (opts: {
   } = await loadScene(null, null, localDataState);
 
   let roomLinkData = getCollaborationLinkData(window.location.href);
+  console.debug("init scene with " + roomLinkData?.roomId);
   const isExternalScene = !!(id || jsonBackendMatch || roomLinkData);
   if (isExternalScene) {
     if (
@@ -184,6 +185,13 @@ const initializeScene = async (opts: {
 
   if (roomLinkData) {
     const { excalidrawAPI } = opts;
+
+    console.debug("start collaboration for " + roomLinkData.roomId);
+    
+    if(opts.collabAPI.isCollaborating()) {
+      console.debug("Collab was already started. stopping active session")
+      opts.collabAPI.stopCollaboration();
+    }
 
     const scene = await opts.collabAPI.startCollaboration(roomLinkData);
 
@@ -345,6 +353,8 @@ const ExcalidrawWrapper = () => {
     });
 
     const onHashChange = async (event: HashChangeEvent) => {
+      console.debug("hash changed " + event.newURL);
+      //TODO load new url
       event.preventDefault();
       const libraryUrlTokens = parseLibraryTokensFromUrl();
       if (!libraryUrlTokens) {

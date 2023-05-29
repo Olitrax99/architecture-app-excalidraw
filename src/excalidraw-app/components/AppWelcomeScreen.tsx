@@ -1,8 +1,6 @@
 import React from "react";
-import { PlusPromoIcon } from "../../components/icons";
 import { useI18n } from "../../i18n";
 import { WelcomeScreen } from "../../packages/excalidraw/index";
-import { isExcalidrawPlusSignedUser } from "../app_constants";
 
 export const AppWelcomeScreen: React.FC<{
   setCollabDialogShown: (toggle: boolean) => any;

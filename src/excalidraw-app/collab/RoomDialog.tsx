@@ -37,16 +37,22 @@ const RoomDialog = ({
   handleClose,
   activeRoomLink,
   username,
+  roomId,
   onUsernameChange,
+  onRoomIdChange,
   onRoomCreate,
   onRoomDestroy,
+  onRoomIdChanged,
   setErrorMessage,
   theme,
 }: {
   handleClose: () => void;
   activeRoomLink: string;
   username: string;
+  roomId: string;
   onUsernameChange: (username: string) => void;
+  onRoomIdChange: (roomId: string) => void;
+  onRoomIdChanged: (roomId: string) => void;
   onRoomCreate: () => void;
   onRoomDestroy: () => void;
   setErrorMessage: (message: string) => void;
@@ -91,6 +97,21 @@ const RoomDialog = ({
         {!activeRoomLink && (
           <>
             <p>{t("roomDialog.desc_intro")}</p>
+            <div className="RoomDialog-roomIdContainer">
+              <label className="RoomDialog-roomIdLabel" htmlFor="roomId">
+                {t("labels.roomId")}
+              </label>
+              <input
+                type="text"
+                id="roomId"
+                value={roomId.trim() || ""}
+                className="RoomDialog-roomId TextInput"
+                onChange={(event) => onRoomIdChange(event.target.value)}
+                onKeyPress={(event) =>
+                  event.key === KEYS.ENTER && onRoomIdChanged(event.target.value)
+                }
+              />
+            </div>
             <div className="RoomDialog-sessionStartButtonContainer">
               <DialogActionButton
                 label={t("roomDialog.button_startSession")}

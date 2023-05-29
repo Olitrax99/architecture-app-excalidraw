@@ -1,5 +1,6 @@
 {
   "labels": {
+    "roomId": "Raumname",
     "paste": "Einfügen",
     "pasteAsPlaintext": "Als reinen Text einfügen",
     "pasteCharts": "Diagramme einfügen",

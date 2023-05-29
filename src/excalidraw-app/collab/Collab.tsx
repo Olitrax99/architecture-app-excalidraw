@@ -74,6 +74,7 @@ export const isOfflineAtom = atom(false);
 interface CollabState {
   errorMessage: string;
   username: string;
+  roomId: string;
   activeRoomLink: string;
 }
 
@@ -113,6 +114,7 @@ class Collab extends PureComponent<Props, CollabState> {
       errorMessage: "",
       username: importUsernameFromLocalStorage() || "",
       activeRoomLink: "",
+      roomId: "",
     };
     this.portal = new Portal(this);
     this.fileManager = new FileManager({
@@ -255,7 +257,7 @@ class Collab extends PureComponent<Props, CollabState> {
     }
   };
 
-  stopCollaboration = (keepRemoteState = true) => {
+  stopCollaboration = (keepRemoteState = false) => {
     this.queueBroadcastAllElements.cancel();
     this.queueSaveToStorage.cancel();
     this.loadImageFiles.cancel();
@@ -359,7 +361,7 @@ class Collab extends PureComponent<Props, CollabState> {
     let roomId;
 
     if (existingRoomLinkData) {
-      ({ roomId } = existingRoomLinkData);
+      roomId = existingRoomLinkData.roomId;
     } else {
       ({ roomId } = await generateCollaborationLinkData());
       window.history.pushState(
@@ -399,7 +401,7 @@ class Collab extends PureComponent<Props, CollabState> {
         }),
         roomId,
       );
-
+      
       this.portal.socket.once("connect_error", fallbackInitializationHandler);
     } catch (error: any) {
       console.error(error);
@@ -414,11 +416,13 @@ class Collab extends PureComponent<Props, CollabState> {
         }
         return element;
       });
+    
       // remove deleted elements from elements array & history to ensure we don't
       // expose potentially sensitive user data in case user manually deletes
       // existing elements (or clears scene), which would otherwise be persisted
       // to database even if deleted before creating the room.
       this.excalidrawAPI.history.clear();
+      console.debug("on start update scene")
       this.excalidrawAPI.updateScene({
         elements,
         commitToHistory: true,
@@ -502,10 +506,13 @@ class Collab extends PureComponent<Props, CollabState> {
       if (this.portal.socket) {
         this.portal.socket.off("first-in-room");
       }
+      console.debug("first in room init");
       const sceneData = await this.initializeRoom({
         fetchScene: true,
         roomLinkData: existingRoomLinkData,
       });
+      //TODO
+      console.debug("first in room init loaded");
       scenePromise.resolve(sceneData);
     });
 
@@ -514,7 +521,7 @@ class Collab extends PureComponent<Props, CollabState> {
     this.setState({
       activeRoomLink: window.location.href,
     });
-
+    console.debug("return scene promise");
     return scenePromise;
   };
 
@@ -534,6 +541,7 @@ class Collab extends PureComponent<Props, CollabState> {
         this.fallbackInitializationHandler,
       );
     }
+    console.debug(`init room... ${fetchScene}`)
     if (fetchScene && roomLinkData && this.portal.socket) {
       this.excalidrawAPI.resetScene();
 
@@ -771,13 +779,40 @@ class Collab extends PureComponent<Props, CollabState> {
     this.setState({ username });
   };
 
+  setRoomId = (roomId: string) => {
+    this.setState({ roomId });
+    /*window.history.pushState(
+      {},
+      APP_NAME,
+      getCollaborationLink({ roomId }),
+    );*/
+  }
+
   onUsernameChange = (username: string) => {
     this.setUsername(username);
     saveUsernameToLocalStorage(username);
   };
 
+  onRoomIdChange = (roomId: string) => {
+    this.setRoomId(roomId);
+  }
+
+  onRoomIdChanged = (roomId: string) => {
+    window.history.pushState(
+      {},
+      APP_NAME,
+      getCollaborationLink({ roomId }),
+    );
+  }
+
+  onStartCollaboration = (roomId: { roomId: string; } | null) => {
+    this.startCollaboration(roomId).then(res => this.excalidrawAPI.updateScene({
+      elements: res?.elements,
+    }));
+  }
+
   render() {
-    const { username, errorMessage, activeRoomLink } = this.state;
+    const { username, errorMessage, activeRoomLink, roomId } = this.state;
 
     const { modalIsShown } = this.props;
 
@@ -788,8 +823,11 @@ class Collab extends PureComponent<Props, CollabState> {
             handleClose={this.handleClose}
             activeRoomLink={activeRoomLink}
             username={username}
+            roomId={roomId}
             onUsernameChange={this.onUsernameChange}
-            onRoomCreate={() => this.startCollaboration(null)}
+            onRoomIdChange={this.onRoomIdChange}
+            onRoomIdChanged={this.onRoomIdChanged}
+            onRoomCreate={() => this.onStartCollaboration(roomId.length > 0 ? { roomId } : null)}
             onRoomDestroy={this.stopCollaboration}
             setErrorMessage={(errorMessage) => {
               this.setState({ errorMessage });

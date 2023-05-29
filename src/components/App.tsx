@@ -112,6 +112,7 @@ import {
   transformElements,
   updateTextElement,
   redrawTextBoundingBox,
+  getSceneVersion,
 } from "../element";
 import {
   bindOrUnbindLinearElement,
@@ -2044,6 +2045,7 @@ class App extends React.Component<AppProps, AppState> {
       }
 
       if (sceneData.elements) {
+        console.debug("updated to version " + getSceneVersion(sceneData.elements));
         this.scene.replaceAllElements(sceneData.elements);
       }
 

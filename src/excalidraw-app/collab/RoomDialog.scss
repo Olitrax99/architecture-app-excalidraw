@@ -28,6 +28,7 @@
     font-family: sans-serif;
   }
 
+  .RoomDialog-roomIdContainer,
   .RoomDialog-usernameContainer {
     display: flex;
     margin: 1.5em 0;
@@ -41,11 +42,13 @@
   }
 
   @include isMobile {
+    .RoomDialog-roomIdLabel,
     .RoomDialog-usernameLabel {
       font-weight: bold;
     }
   }
 
+  .RoomDialog-roomId,
   .RoomDialog-username {
     background-color: var(--input-bg-color);
     border-color: var(--input-border-color);
