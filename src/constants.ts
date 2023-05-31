@@ -17,7 +17,11 @@ export const isSafari =
 export const isBrave = () =>
   (navigator as any).brave?.isBrave?.name === "isBrave";
 
-export const APP_NAME = "Excalidraw";
+export const APP_NAME = "Architecture-App";
+
+export const APP_GET_CONTEXT = (): string => {
+  return window.location.origin + window.location.pathname.substring(0, window.location.pathname.indexOf("/", 2));
+}
 
 export const DRAGGING_THRESHOLD = 10; // px
 export const LINE_CONFIRM_THRESHOLD = 8; // px

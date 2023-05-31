@@ -48,6 +48,7 @@ import {
 } from "../appState";
 import { parseClipboard } from "../clipboard";
 import {
+  APP_GET_CONTEXT,
   APP_NAME,
   CURSOR_TYPE,
   DEFAULT_MAX_IMAGE_WIDTH_OR_HEIGHT,
@@ -3007,7 +3008,7 @@ class App extends React.Component<AppProps, AppState> {
           // https://mathiasbynens.github.io/rel-noopener/
           if (newWindow) {
             newWindow.opener = null;
-            newWindow.location = normalizeLink(url);
+            newWindow.location = normalizeLink(APP_GET_CONTEXT() + url);
           }
         }
       }
