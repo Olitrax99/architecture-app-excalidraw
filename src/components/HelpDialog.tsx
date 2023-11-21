@@ -7,6 +7,41 @@ import "./HelpDialog.scss";
 import { probablySupportsClipboardBlob } from "../clipboard";
 import { isDarwin, isFirefox, isWindows } from "../constants";
 
+<<<<<<< HEAD
+=======
+const Header = () => (
+  <div className="HelpDialog__header">
+    <a
+      className="HelpDialog__btn"
+      href="https://docs.excalidraw.com"
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      {t("helpDialog.documentation")}
+      <div className="HelpDialog__link-icon">{ExternalLinkIcon}</div>
+    </a>
+    <a
+      className="HelpDialog__btn"
+      href="https://blog.excalidraw.com"
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      {t("helpDialog.blog")}
+      <div className="HelpDialog__link-icon">{ExternalLinkIcon}</div>
+    </a>
+    <a
+      className="HelpDialog__btn"
+      href="https://github.com/excalidraw/excalidraw/issues"
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      {t("helpDialog.github")}
+      <div className="HelpDialog__link-icon">{ExternalLinkIcon}</div>
+    </a>
+  </div>
+);
+
+>>>>>>> 7c9cf30909c6c368407994cb25e22292b99eee5d
 const Section = (props: { title: string; children: React.ReactNode }) => (
   <>
     <h3>{props.title}</h3>
@@ -130,6 +165,12 @@ export const HelpDialog = ({ onClose }: { onClose?: () => void }) => {
               label={t("toolBar.eraser")}
               shortcuts={[KEYS.E, KEYS["0"]]}
             />
+            <Shortcut label={t("toolBar.frame")} shortcuts={[KEYS.F]} />
+            <Shortcut label={t("toolBar.laser")} shortcuts={[KEYS.K]} />
+            <Shortcut
+              label={t("labels.eyeDropper")}
+              shortcuts={[KEYS.I, "Shift+S", "Shift+G"]}
+            />
             <Shortcut
               label={t("helpDialog.editLineArrowPoints")}
               shortcuts={[getShortcutKey("CtrlOrCmd+Enter")]}
@@ -214,10 +255,13 @@ export const HelpDialog = ({ onClose }: { onClose?: () => void }) => {
               label={t("helpDialog.movePageLeftRight")}
               shortcuts={["Shift+PgUp/PgDn"]}
             />
-            <Shortcut label={t("buttons.fullScreen")} shortcuts={["F"]} />
             <Shortcut
               label={t("buttons.zenMode")}
               shortcuts={[getShortcutKey("Alt+Z")]}
+            />
+            <Shortcut
+              label={t("buttons.objectsSnapMode")}
+              shortcuts={[getShortcutKey("Alt+S")]}
             />
             <Shortcut
               label={t("labels.showGrid")}

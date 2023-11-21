@@ -40,10 +40,6 @@
     "arrowhead_triangle": "Triangle",
     "fontSize": "Mida de lletra",
     "fontFamily": "Tipus de lletra",
-    "onlySelected": "Només seleccionats",
-    "withBackground": "Fons",
-    "exportEmbedScene": "Insereix l'escena",
-    "exportEmbedScene_details": "Les dades de l’escena es desaran al fitxer PNG/SVG de manera que es pugui restaurar l’escena.\nAugmentarà la mida del fitxer exportat.",
     "addWatermark": "Afegeix-hi «Fet amb Excalidraw»",
     "handDrawn": "Dibuixat a mà",
     "normal": "Normal",
@@ -100,7 +96,6 @@
     "flipHorizontal": "Capgira horitzontalment",
     "flipVertical": "Capgira verticalment",
     "viewMode": "Mode de visualització",
-    "toggleExportColorScheme": "Canvia l'esquema de colors de l'exportació",
     "share": "Comparteix",
     "showStroke": "Mostra el selector de color del traç",
     "showBackground": "Mostra el selector de color de fons",
@@ -114,8 +109,12 @@
     "createContainerFromText": "",
     "link": {
       "edit": "Edita l'enllaç",
+      "editEmbed": "",
       "create": "Crea un enllaç",
-      "label": "Enllaç"
+      "createEmbed": "",
+      "label": "Enllaç",
+      "labelEmbed": "",
+      "empty": ""
     },
     "lineEditor": {
       "edit": "Editar línia",
@@ -128,7 +127,10 @@
       "unlockAll": "Desbloca-ho tot"
     },
     "statusPublished": "Publicat",
-    "sidebarLock": "Manté la barra lateral oberta"
+    "sidebarLock": "Manté la barra lateral oberta",
+    "selectAllElementsInFrame": "",
+    "removeAllElementsFromFrame": "",
+    "eyeDropper": ""
   },
   "library": {
     "noItems": "Encara no s'hi han afegit elements...",
@@ -140,11 +142,7 @@
     "exportJSON": "Exporta a un fitxer",
     "exportImage": "Exporta la imatge...",
     "export": "Guardar a...",
-    "exportToPng": "Exporta a PNG",
-    "exportToSvg": "Exporta a SNG",
     "copyToClipboard": "Copia al porta-retalls",
-    "copyPngToClipboard": "Copia el PNG al porta-retalls",
-    "scale": "Escala",
     "save": "Desa al fitxer actual",
     "saveAs": "Anomena i desa",
     "load": "Obrir",
@@ -166,13 +164,16 @@
     "darkMode": "Mode fosc",
     "lightMode": "Mode clar",
     "zenMode": "Mode zen",
+    "objectsSnapMode": "",
     "exitZenMode": "Surt de mode zen",
     "cancel": "Cancel·la",
     "clear": "Neteja",
     "remove": "Suprimeix",
+    "embed": "",
     "publishLibrary": "Publica",
     "submit": "Envia",
-    "confirm": "Confirma"
+    "confirm": "Confirma",
+    "embeddableInteractionButton": ""
   },
   "alerts": {
     "clearReset": "S'esborrarà tot el llenç. N'esteu segur?",
@@ -202,6 +203,7 @@
     "imageInsertError": "No s'ha pogut insertar la imatge, torneu-ho a provar més tard...",
     "fileTooBig": "El fitxer és massa gros. La mida màxima permesa és {{maxSize}}.",
     "svgImageInsertError": "No ha estat possible inserir la imatge SVG. Les marques SVG semblen invàlides.",
+    "failedToFetchImage": "",
     "invalidSVGString": "SVG no vàlid.",
     "cannotResolveCollabServer": "No ha estat possible connectar amb el servidor collab. Si us plau recarregueu la pàgina i torneu a provar.",
     "importLibraryError": "No s'ha pogut carregar la biblioteca",
@@ -212,6 +214,10 @@
       "line2": "",
       "line3": "",
       "line4": ""
+    },
+    "libraryElementTypeError": {
+      "embeddable": "",
+      "image": ""
     }
   },
   "toolBar": {
@@ -229,7 +235,11 @@
     "penMode": "Mode de llapis - evita tocar",
     "link": "Afegeix / actualitza l'enllaç per a la forma seleccionada",
     "eraser": "Esborrador",
-    "hand": "Mà (eina de desplaçament)"
+    "frame": "",
+    "embeddable": "",
+    "laser": "",
+    "hand": "Mà (eina de desplaçament)",
+    "extraTools": ""
   },
   "headings": {
     "canvasActions": "Accions del llenç",
@@ -241,6 +251,7 @@
     "linearElement": "Feu clic per a dibuixar múltiples punts; arrossegueu per a una sola línia",
     "freeDraw": "Feu clic i arrossegueu, deixeu anar per a finalitzar",
     "text": "Consell: també podeu afegir text fent doble clic en qualsevol lloc amb l'eina de selecció",
+    "embeddable": "",
     "text_selected": "Feu doble clic o premeu Retorn per a editar el text",
     "text_editing": "Premeu Escapada o Ctrl+Retorn (o Ordre+Retorn) per a finalitzar l'edició",
     "linearElementMulti": "Feu clic a l'ultim punt, o pitgeu Esc o Retorn per a finalitzar",
@@ -256,7 +267,8 @@
     "bindTextToElement": "Premeu enter per a afegir-hi text",
     "deepBoxSelect": "Manteniu CtrlOrCmd per a selecció profunda, i per a evitar l'arrossegament",
     "eraserRevert": "Mantingueu premuda Alt per a revertir els elements seleccionats per a esborrar",
-    "firefox_clipboard_write": "És probable que aquesta funció es pugui activar posant la marca \"dom.events.asyncClipboard.clipboardItem\" a \"true\". Per canviar les marques del navegador al Firefox, visiteu la pàgina \"about:config\"."
+    "firefox_clipboard_write": "És probable que aquesta funció es pugui activar posant la marca \"dom.events.asyncClipboard.clipboardItem\" a \"true\". Per canviar les marques del navegador al Firefox, visiteu la pàgina \"about:config\".",
+    "disableSnapping": ""
   },
   "canvasError": {
     "cannotShowPreview": "No es pot mostrar la previsualització",
@@ -363,6 +375,30 @@
     "resetLibrary": "Restableix la biblioteca",
     "removeItemsFromLib": "Suprimeix els elements seleccionats de la llibreria"
   },
+  "imageExportDialog": {
+    "header": "",
+    "label": {
+      "withBackground": "",
+      "onlySelected": "",
+      "darkMode": "",
+      "embedScene": "",
+      "scale": "",
+      "padding": ""
+    },
+    "tooltip": {
+      "embedScene": ""
+    },
+    "title": {
+      "exportToPng": "",
+      "exportToSvg": "",
+      "copyPngToClipboard": ""
+    },
+    "button": {
+      "exportToPng": "",
+      "exportToSvg": "",
+      "copyPngToClipboard": ""
+    }
+  },
   "encrypted": {
     "tooltip": "Els vostres dibuixos estan xifrats de punta a punta de manera que els servidors d’Excalidraw no els veuran mai.",
     "link": "Article del blog sobre encriptació d'extrem a extrem a Excalidraw"
@@ -391,7 +427,9 @@
     "fileSavedToFilename": "S'ha desat a {filename}",
     "canvas": "el llenç",
     "selection": "la selecció",
-    "pasteAsSingleElement": "Fer servir {{shortcut}} per enganxar com un sol element,\no enganxeu-lo en un editor de text existent"
+    "pasteAsSingleElement": "Fer servir {{shortcut}} per enganxar com un sol element,\no enganxeu-lo en un editor de text existent",
+    "unableToEmbed": "",
+    "unrecognizedLinkFormat": ""
   },
   "colors": {
     "transparent": "Transparent",
@@ -429,5 +467,36 @@
     "shades": "",
     "hexCode": "",
     "noShades": ""
+  },
+  "overwriteConfirm": {
+    "action": {
+      "exportToImage": {
+        "title": "",
+        "button": "",
+        "description": ""
+      },
+      "saveToDisk": {
+        "title": "",
+        "button": "",
+        "description": ""
+      },
+      "excalidrawPlus": {
+        "title": "",
+        "button": "",
+        "description": ""
+      }
+    },
+    "modal": {
+      "loadFromFile": {
+        "title": "",
+        "button": "",
+        "description": ""
+      },
+      "shareableLink": {
+        "title": "",
+        "button": "",
+        "description": ""
+      }
+    }
   }
 }

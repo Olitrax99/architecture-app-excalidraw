@@ -40,10 +40,6 @@
     "arrowhead_triangle": "Trekant",
     "fontSize": "Skriftstørrelse",
     "fontFamily": "Fontfamilie",
-    "onlySelected": "Kun valgte",
-    "withBackground": "Bakgrunn",
-    "exportEmbedScene": "Bygg inn scene",
-    "exportEmbedScene_details": "Scenedata vil bli lagret i den eksporterte PNG/SVG-filen, slik at scenen kan gjenopprettes fra den.\nDet vil øke den eksporterte filstørrelsen.",
     "addWatermark": "Legg til \"Laget med Excalidraw\"",
     "handDrawn": "Håndtegnet",
     "normal": "Normal",
@@ -100,7 +96,6 @@
     "flipHorizontal": "Snu horisontalt",
     "flipVertical": "Snu vertikalt",
     "viewMode": "Visningsmodus",
-    "toggleExportColorScheme": "Veksle eksport av fargepalett",
     "share": "Del",
     "showStroke": "Vis fargevelger for kantfarge",
     "showBackground": "Vis fargevelger for bakgrunnsfarge",
@@ -114,8 +109,12 @@
     "createContainerFromText": "La tekst flyte i en beholder",
     "link": {
       "edit": "Rediger lenke",
+      "editEmbed": "Rediger lenke og bygg inn",
       "create": "Opprett lenke",
-      "label": "Lenke"
+      "createEmbed": "Opprett lenke og bygg inn",
+      "label": "Lenke",
+      "labelEmbed": "Lenk & bygg inn",
+      "empty": "Ingen lenke er valgt"
     },
     "lineEditor": {
       "edit": "Rediger linje",
@@ -128,7 +127,10 @@
       "unlockAll": "Lås opp alle"
     },
     "statusPublished": "Publisert",
-    "sidebarLock": "Holde sidemenyen åpen"
+    "sidebarLock": "Holde sidemenyen åpen",
+    "selectAllElementsInFrame": "Velg alle elementene i rammen",
+    "removeAllElementsFromFrame": "Fjern alle elementer fra rammen",
+    "eyeDropper": "Velg farge fra lerretet"
   },
   "library": {
     "noItems": "Ingen elementer lagt til ennå...",
@@ -140,11 +142,7 @@
     "exportJSON": "Eksporter til fil",
     "exportImage": "Eksporter bilde...",
     "export": "Lagre som...",
-    "exportToPng": "Eksporter til PNG",
-    "exportToSvg": "Eksporter til SVG",
     "copyToClipboard": "Kopier til utklippstavle",
-    "copyPngToClipboard": "Kopier PNG til utklippstavlen",
-    "scale": "Skalering",
     "save": "Lagre til aktiv fil",
     "saveAs": "Lagre som",
     "load": "Åpne",
@@ -166,13 +164,16 @@
     "darkMode": "Mørk modus",
     "lightMode": "Lys modus",
     "zenMode": "Zen-modus",
+    "objectsSnapMode": "",
     "exitZenMode": "Avslutt zen-modus",
     "cancel": "Avbryt",
     "clear": "Tøm",
     "remove": "Fjern",
+    "embed": "Slå av/på innebygging",
     "publishLibrary": "Publiser",
     "submit": "Send inn",
-    "confirm": "Bekreft"
+    "confirm": "Bekreft",
+    "embeddableInteractionButton": "Klikk for å samhandle"
   },
   "alerts": {
     "clearReset": "Dette vil tømme lerretet. Er du sikker?",
@@ -202,6 +203,7 @@
     "imageInsertError": "Kunne ikke sette inn bildet. Prøv igjen senere...",
     "fileTooBig": "Filen er for stor. Maksimal tillatt størrelse er {{maxSize}}.",
     "svgImageInsertError": "Kunne ikke sette inn SVG-bilde. SVG-koden ser ugyldig ut.",
+    "failedToFetchImage": "",
     "invalidSVGString": "Ugyldig SVG.",
     "cannotResolveCollabServer": "Kunne ikke koble til samarbeidsserveren. Vennligst oppdater siden og prøv på nytt.",
     "importLibraryError": "Kunne ikke laste bibliotek",
@@ -212,6 +214,10 @@
       "line2": "Dette kan resultere i å bryte <bold>tekst-elementene</bold> i tegningene.",
       "line3": "Vi anbefaler på det sterkeste å deaktivere denne innstillingen. Du kan følge <link>disse trinnene</link> om hvordan du gjør det.",
       "line4": "Hvis deaktivering av denne innstillingen ikke fikser visningen av tekstelementer, vennligst åpne en <issueLink>sak</issueLink> på vår GitHub, eller skriv oss på <discordLink>Discord</discordLink>"
+    },
+    "libraryElementTypeError": {
+      "embeddable": "Innebygde elementer kan ikke legges til i biblioteket.",
+      "image": "Støtte for å legge til bilder i biblioteket kommer snart!"
     }
   },
   "toolBar": {
@@ -229,7 +235,11 @@
     "penMode": "Pennemodus - forhindre berøring",
     "link": "Legg til / oppdater link for en valgt figur",
     "eraser": "Viskelær",
-    "hand": "Hånd (panoreringsverktøy)"
+    "frame": "Rammeverktøy",
+    "embeddable": "Nettinnbygging",
+    "laser": "",
+    "hand": "Hånd (panoreringsverktøy)",
+    "extraTools": "Flere verktøy"
   },
   "headings": {
     "canvasActions": "Handlinger: lerret",
@@ -241,6 +251,7 @@
     "linearElement": "Klikk for å starte linje med flere punkter, eller dra for en enkel linje",
     "freeDraw": "Klikk og dra, slipp når du er ferdig",
     "text": "Tips: du kan også legge til tekst ved å dobbeltklikke hvor som helst med utvalgsverktøyet",
+    "embeddable": "Klikk og dra for å opprette en nettside innebygd",
     "text_selected": "Dobbeltklikk eller trykk ENTER for å redigere tekst",
     "text_editing": "Trykk Escape eller Ctrl/Cmd+Enter for å fullføre redigering",
     "linearElementMulti": "Klikk på siste punkt eller trykk Escape eller Enter for å fullføre",
@@ -256,7 +267,8 @@
     "bindTextToElement": "Trykk Enter for å legge til tekst",
     "deepBoxSelect": "Hold CTRL/CMD for å markere dypt og forhindre flytting",
     "eraserRevert": "Hold Alt for å reversere elementene merket for sletting",
-    "firefox_clipboard_write": "Denne funksjonen kan sannsynligvis aktiveres ved å sette \"dom.events.asyncClipboard.clipboardItem\" flagget til \"true\". For å endre nettleserens flagg i Firefox, besøk \"about:config\"-siden."
+    "firefox_clipboard_write": "Denne funksjonen kan sannsynligvis aktiveres ved å sette \"dom.events.asyncClipboard.clipboardItem\" flagget til \"true\". For å endre nettleserens flagg i Firefox, besøk \"about:config\"-siden.",
+    "disableSnapping": ""
   },
   "canvasError": {
     "cannotShowPreview": "Kan ikke vise forhåndsvisning",
@@ -363,6 +375,30 @@
     "resetLibrary": "Nullstill bibliotek",
     "removeItemsFromLib": "Fjern valgte elementer fra bibliotek"
   },
+  "imageExportDialog": {
+    "header": "Eksporter bilde",
+    "label": {
+      "withBackground": "Bakgrunn",
+      "onlySelected": "Kun valgte",
+      "darkMode": "Mørk modus",
+      "embedScene": "Bygg inn scene",
+      "scale": "Skalering",
+      "padding": "Avstand"
+    },
+    "tooltip": {
+      "embedScene": "Scenedata vil bli lagret i den eksporterte PNG/SVG-filen, slik at scenen kan gjenopprettes fra den.\nDet vil øke den eksporterte filstørrelsen."
+    },
+    "title": {
+      "exportToPng": "Eksporter til PNG",
+      "exportToSvg": "Eksporter til SVG",
+      "copyPngToClipboard": "Kopier PNG til utklippstavlen"
+    },
+    "button": {
+      "exportToPng": "PNG",
+      "exportToSvg": "SVG",
+      "copyPngToClipboard": "Kopier til utklippstavle"
+    }
+  },
   "encrypted": {
     "tooltip": "Dine tegninger er ende-til-ende-krypterte slik at Excalidraw sine servere aldri vil se dem.",
     "link": "Blogginnlegg om ende-til-ende-kryptering i Excalidraw"
@@ -391,7 +427,9 @@
     "fileSavedToFilename": "Lagret til {filename}",
     "canvas": "lerret",
     "selection": "utvalg",
-    "pasteAsSingleElement": "Bruk {{shortcut}} for å lime inn som ett enkelt element,\neller lim inn i en eksisterende tekstbehandler"
+    "pasteAsSingleElement": "Bruk {{shortcut}} for å lime inn som ett enkelt element,\neller lim inn i en eksisterende tekstbehandler",
+    "unableToEmbed": "Innbygging av denne nettadressen er ikke tillatt. Oppret en sak på GitHub for å be om url-hvitelisting",
+    "unrecognizedLinkFormat": "Linken du bygget inn samsvarer ikke med det forventede formatet. Prøv å lime inn \"bygg inn\"-strengen fra kildesiden"
   },
   "colors": {
     "transparent": "Gjennomsiktig",
@@ -429,5 +467,36 @@
     "shades": "Toner",
     "hexCode": "Heksadesimal kode",
     "noShades": "Ingen toner tilgjengelig for denne fargen"
+  },
+  "overwriteConfirm": {
+    "action": {
+      "exportToImage": {
+        "title": "Eksporter som bilde",
+        "button": "Eksporter som bilde",
+        "description": "Eksporter scene-dataene til en fil som du kan importere fra senere."
+      },
+      "saveToDisk": {
+        "title": "Lagre til disk",
+        "button": "Lagre til disk",
+        "description": "Eksporter scene-dataene til en fil som du kan importere fra senere."
+      },
+      "excalidrawPlus": {
+        "title": "Excalidraw+",
+        "button": "Eksporter til Excalidraw+",
+        "description": "Lagre scenen til ditt Excalidraw+-arbeidsområde."
+      }
+    },
+    "modal": {
+      "loadFromFile": {
+        "title": "Last inn fra fil",
+        "button": "Last inn fra fil",
+        "description": "Å laste fra en fil vil <bold>erstatte ditt eksisterende innhold</bold>.<br></br>Du kan sikkerhetskopiere tegningen din først ved å bruke en av valgene under."
+      },
+      "shareableLink": {
+        "title": "Last inn fra lenke",
+        "button": "Erstatt innholdet mitt",
+        "description": "Lasting av ekstern tegning vil <bold>erstatte ditt eksisterende innhold</bold>.<br></br>Du kan sikkerhetskopiere tegningen din først ved å bruke en av valgene nedenfor."
+      }
+    }
   }
 }

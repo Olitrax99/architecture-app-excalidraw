@@ -40,10 +40,6 @@
     "arrowhead_triangle": "三角箭嘴",
     "fontSize": "字型大小",
     "fontFamily": "字體",
-    "onlySelected": "只匯出已選取的物件",
-    "withBackground": "連同背景色一併匯出",
-    "exportEmbedScene": "嵌入畫布內容",
-    "exportEmbedScene_details": "雖然使用「嵌入畫布內容」匯出的 PNG 或 SVG 檔案大小會有所增加，但是你可以透過匯入包含畫布內容的存檔來回復及繼續編輯。",
     "addWatermark": "加入「使用 Excalidraw 製圖」水印",
     "handDrawn": "手繪體",
     "normal": "電腦字體",
@@ -100,7 +96,6 @@
     "flipHorizontal": "左右反轉",
     "flipVertical": "上下反轉",
     "viewMode": "唯讀模式",
-    "toggleExportColorScheme": "",
     "share": "",
     "showStroke": "",
     "showBackground": "",
@@ -114,8 +109,12 @@
     "createContainerFromText": "",
     "link": {
       "edit": "",
+      "editEmbed": "",
       "create": "",
-      "label": ""
+      "createEmbed": "",
+      "label": "",
+      "labelEmbed": "",
+      "empty": ""
     },
     "lineEditor": {
       "edit": "",
@@ -128,7 +127,10 @@
       "unlockAll": ""
     },
     "statusPublished": "",
-    "sidebarLock": ""
+    "sidebarLock": "",
+    "selectAllElementsInFrame": "",
+    "removeAllElementsFromFrame": "",
+    "eyeDropper": ""
   },
   "library": {
     "noItems": "",
@@ -140,11 +142,7 @@
     "exportJSON": "",
     "exportImage": "",
     "export": "",
-    "exportToPng": "",
-    "exportToSvg": "",
     "copyToClipboard": "",
-    "copyPngToClipboard": "",
-    "scale": "",
     "save": "",
     "saveAs": "",
     "load": "",
@@ -166,13 +164,16 @@
     "darkMode": "",
     "lightMode": "",
     "zenMode": "",
+    "objectsSnapMode": "",
     "exitZenMode": "",
     "cancel": "",
     "clear": "",
     "remove": "",
+    "embed": "",
     "publishLibrary": "",
     "submit": "",
-    "confirm": ""
+    "confirm": "",
+    "embeddableInteractionButton": ""
   },
   "alerts": {
     "clearReset": "【‼️ 警告 ‼️ 無法復原的動作】你確定要清空呢塊畫布嗎？",
@@ -202,6 +203,7 @@
     "imageInsertError": "",
     "fileTooBig": "",
     "svgImageInsertError": "",
+    "failedToFetchImage": "",
     "invalidSVGString": "",
     "cannotResolveCollabServer": "",
     "importLibraryError": "",
@@ -212,6 +214,10 @@
       "line2": "",
       "line3": "",
       "line4": ""
+    },
+    "libraryElementTypeError": {
+      "embeddable": "",
+      "image": ""
     }
   },
   "toolBar": {
@@ -229,7 +235,11 @@
     "penMode": "",
     "link": "",
     "eraser": "",
-    "hand": ""
+    "frame": "",
+    "embeddable": "",
+    "laser": "",
+    "hand": "",
+    "extraTools": ""
   },
   "headings": {
     "canvasActions": "畫布動作",
@@ -241,6 +251,7 @@
     "linearElement": "",
     "freeDraw": "",
     "text": "",
+    "embeddable": "",
     "text_selected": "",
     "text_editing": "",
     "linearElementMulti": "",
@@ -256,7 +267,8 @@
     "bindTextToElement": "",
     "deepBoxSelect": "",
     "eraserRevert": "",
-    "firefox_clipboard_write": ""
+    "firefox_clipboard_write": "",
+    "disableSnapping": ""
   },
   "canvasError": {
     "cannotShowPreview": "無法顯示預覽",
@@ -363,6 +375,30 @@
     "resetLibrary": "",
     "removeItemsFromLib": ""
   },
+  "imageExportDialog": {
+    "header": "",
+    "label": {
+      "withBackground": "",
+      "onlySelected": "",
+      "darkMode": "",
+      "embedScene": "",
+      "scale": "",
+      "padding": ""
+    },
+    "tooltip": {
+      "embedScene": ""
+    },
+    "title": {
+      "exportToPng": "",
+      "exportToSvg": "",
+      "copyPngToClipboard": ""
+    },
+    "button": {
+      "exportToPng": "",
+      "exportToSvg": "",
+      "copyPngToClipboard": ""
+    }
+  },
   "encrypted": {
     "tooltip": "",
     "link": ""
@@ -391,7 +427,9 @@
     "fileSavedToFilename": "",
     "canvas": "畫布",
     "selection": "",
-    "pasteAsSingleElement": ""
+    "pasteAsSingleElement": "",
+    "unableToEmbed": "",
+    "unrecognizedLinkFormat": ""
   },
   "colors": {
     "transparent": "",
@@ -429,5 +467,36 @@
     "shades": "",
     "hexCode": "",
     "noShades": ""
+  },
+  "overwriteConfirm": {
+    "action": {
+      "exportToImage": {
+        "title": "",
+        "button": "",
+        "description": ""
+      },
+      "saveToDisk": {
+        "title": "",
+        "button": "",
+        "description": ""
+      },
+      "excalidrawPlus": {
+        "title": "",
+        "button": "",
+        "description": ""
+      }
+    },
+    "modal": {
+      "loadFromFile": {
+        "title": "",
+        "button": "",
+        "description": ""
+      },
+      "shareableLink": {
+        "title": "",
+        "button": "",
+        "description": ""
+      }
+    }
   }
 }

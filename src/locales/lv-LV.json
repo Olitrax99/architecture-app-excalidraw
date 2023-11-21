@@ -40,10 +40,6 @@
     "arrowhead_triangle": "Trijstūris",
     "fontSize": "Teksta lielums",
     "fontFamily": "Fontu saime",
-    "onlySelected": "Tikai atlasītais",
-    "withBackground": "Fons",
-    "exportEmbedScene": "Iegult ainu",
-    "exportEmbedScene_details": "Ainas dati tiks iekļauti saglabātajā PNG/SVG datnē, lai no tās būtu iespējams ainu atgūt. Tas palielinās datnes izmēru.",
     "addWatermark": "Pievienot \"Radīts ar Excalidraw\"",
     "handDrawn": "Rokraksts",
     "normal": "Parasts",
@@ -100,7 +96,6 @@
     "flipHorizontal": "Apmest horizontāli",
     "flipVertical": "Apmest vertikāli",
     "viewMode": "Skata režīms",
-    "toggleExportColorScheme": "Pārslēgt eksporta krāsu tēmu",
     "share": "Kopīgot",
     "showStroke": "Rādīt svītras krāsas atlasītāju",
     "showBackground": "Rādīt fona krāsas atlasītāju",
@@ -114,8 +109,12 @@
     "createContainerFromText": "Ietilpināt tekstu figurā",
     "link": {
       "edit": "Rediģēt saiti",
+      "editEmbed": "",
       "create": "Izveidot saiti",
-      "label": "Saite"
+      "createEmbed": "",
+      "label": "Saite",
+      "labelEmbed": "",
+      "empty": ""
     },
     "lineEditor": {
       "edit": "Rediģēt līniju",
@@ -128,7 +127,10 @@
       "unlockAll": "Atbrīvot visu"
     },
     "statusPublished": "Publicēts",
-    "sidebarLock": "Paturēt atvērtu sānjoslu"
+    "sidebarLock": "Paturēt atvērtu sānjoslu",
+    "selectAllElementsInFrame": "",
+    "removeAllElementsFromFrame": "",
+    "eyeDropper": ""
   },
   "library": {
     "noItems": "Neviena vienība vēl nav pievienota...",
@@ -140,11 +142,7 @@
     "exportJSON": "Eksportēt kā failu",
     "exportImage": "Eksportēt attēlu...",
     "export": "Saglabāt uz...",
-    "exportToPng": "Eksportēt kā PNG",
-    "exportToSvg": "Eksportēt kā SVG",
     "copyToClipboard": "Kopēt starpliktuvē",
-    "copyPngToClipboard": "Kopēt PNG starpliktuvē",
-    "scale": "Mērogs",
     "save": "Saglabāt pašreizējo datni",
     "saveAs": "Saglabāt kā",
     "load": "Atvērt",
@@ -166,13 +164,16 @@
     "darkMode": "Tumšais režīms",
     "lightMode": "Gaišais režīms",
     "zenMode": "Zen režīms",
+    "objectsSnapMode": "",
     "exitZenMode": "Pamest Zen režīmu",
     "cancel": "Atcelt",
     "clear": "Notīrīt",
     "remove": "Noņemt",
+    "embed": "",
     "publishLibrary": "Publicēt",
     "submit": "Iesniegt",
-    "confirm": "Apstiprināt"
+    "confirm": "Apstiprināt",
+    "embeddableInteractionButton": ""
   },
   "alerts": {
     "clearReset": "Šī funkcija notīrīs visu tāfeli. Vai turpināt?",
@@ -202,6 +203,7 @@
     "imageInsertError": "Nevarēja ievietot attēlu. Mēģiniet vēlāk...",
     "fileTooBig": "Datne ir par lielu. Lielākais atļautais izmērs ir {{maxSize}}.",
     "svgImageInsertError": "Nevarēja ievietot SVG attēlu. Šķiet, ka SVG marķējums nav derīgs.",
+    "failedToFetchImage": "",
     "invalidSVGString": "Nederīgs SVG.",
     "cannotResolveCollabServer": "Nevarēja savienoties ar sadarbošanās serveri. Lūdzu, pārlādējiet lapu un mēģiniet vēlreiz.",
     "importLibraryError": "Nevarēja ielādēt bibliotēku",
@@ -212,6 +214,10 @@
       "line2": "",
       "line3": "",
       "line4": ""
+    },
+    "libraryElementTypeError": {
+      "embeddable": "",
+      "image": ""
     }
   },
   "toolBar": {
@@ -229,7 +235,11 @@
     "penMode": "Pildspalvas režīms – novērst pieskaršanos",
     "link": "Pievienot/rediģēt atlasītās figūras saiti",
     "eraser": "Dzēšgumija",
-    "hand": "Roka (panoramēšanas rīks)"
+    "frame": "",
+    "embeddable": "",
+    "laser": "",
+    "hand": "Roka (panoramēšanas rīks)",
+    "extraTools": ""
   },
   "headings": {
     "canvasActions": "Tāfeles darbības",
@@ -241,6 +251,7 @@
     "linearElement": "Klikšķiniet, lai sāktu zīmēt vairākus punktus; velciet, lai zīmētu līniju",
     "freeDraw": "Spiediet un velciet; atlaidiet, kad pabeidzat",
     "text": "Ieteikums: lai pievienotu tekstu, varat arī jebkur dubultklikšķināt ar atlases rīku",
+    "embeddable": "",
     "text_selected": "Dubultklikšķiniet vai spiediet ievades taustiņu, lai rediģētu tekstu",
     "text_editing": "Spiediet iziešanas taustiņu vai CtrlOrCmd+ENTER, lai beigtu rediģēt",
     "linearElementMulti": "Klikšķiniet uz pēdējā punkta vai spiediet izejas vai ievades taustiņu, lai pabeigtu",
@@ -256,7 +267,8 @@
     "bindTextToElement": "Spiediet ievades taustiņu, lai pievienotu tekstu",
     "deepBoxSelect": "Turient nospiestu Ctrl vai Cmd, lai atlasītu dziļumā un lai nepieļautu objektu pavilkšanu",
     "eraserRevert": "Turiet Alt, lai noņemtu elementus no dzēsšanas atlases",
-    "firefox_clipboard_write": "Šis iestatījums var tikt ieslēgts ar \"dom.events.asyncClipboard.clipboardItem\" marķieri pārslēgtu uz \"true\". Lai mainītu pārlūka marķierus Firefox, apmeklē \"about:config\" lapu."
+    "firefox_clipboard_write": "Šis iestatījums var tikt ieslēgts ar \"dom.events.asyncClipboard.clipboardItem\" marķieri pārslēgtu uz \"true\". Lai mainītu pārlūka marķierus Firefox, apmeklē \"about:config\" lapu.",
+    "disableSnapping": ""
   },
   "canvasError": {
     "cannotShowPreview": "Nevar rādīt priekšskatījumu",
@@ -363,6 +375,30 @@
     "resetLibrary": "Atiestatīt bibliotēku",
     "removeItemsFromLib": "Noņemt atlasītos vienumus no bibliotēkas"
   },
+  "imageExportDialog": {
+    "header": "",
+    "label": {
+      "withBackground": "",
+      "onlySelected": "",
+      "darkMode": "",
+      "embedScene": "",
+      "scale": "",
+      "padding": ""
+    },
+    "tooltip": {
+      "embedScene": ""
+    },
+    "title": {
+      "exportToPng": "",
+      "exportToSvg": "",
+      "copyPngToClipboard": ""
+    },
+    "button": {
+      "exportToPng": "",
+      "exportToSvg": "",
+      "copyPngToClipboard": ""
+    }
+  },
   "encrypted": {
     "tooltip": "Jūsu zīmējumi ir šifrēti no gala līdz galam; līdz ar to Excalidraw serveri tos nekad neredzēs.",
     "link": "Ieraksts par šifrēšanu no gala līdz galam Excalidraw blogā"
@@ -391,7 +427,9 @@
     "fileSavedToFilename": "Saglabāts kā {filename}",
     "canvas": "tāfeli",
     "selection": "atlasi",
-    "pasteAsSingleElement": "Izmantojiet {{shortcut}}, lai ielīmētu kā jaunu elementu, vai ielīmētu esošā teksta lauciņā"
+    "pasteAsSingleElement": "Izmantojiet {{shortcut}}, lai ielīmētu kā jaunu elementu, vai ielīmētu esošā teksta lauciņā",
+    "unableToEmbed": "",
+    "unrecognizedLinkFormat": ""
   },
   "colors": {
     "transparent": "Caurspīdīgs",
@@ -429,5 +467,36 @@
     "shades": "",
     "hexCode": "",
     "noShades": ""
+  },
+  "overwriteConfirm": {
+    "action": {
+      "exportToImage": {
+        "title": "",
+        "button": "",
+        "description": ""
+      },
+      "saveToDisk": {
+        "title": "",
+        "button": "",
+        "description": ""
+      },
+      "excalidrawPlus": {
+        "title": "",
+        "button": "",
+        "description": ""
+      }
+    },
+    "modal": {
+      "loadFromFile": {
+        "title": "",
+        "button": "",
+        "description": ""
+      },
+      "shareableLink": {
+        "title": "",
+        "button": "",
+        "description": ""
+      }
+    }
   }
 }

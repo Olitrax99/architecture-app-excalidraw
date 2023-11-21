@@ -45,6 +45,14 @@ export const POINTER_BUTTON = {
   TOUCH: -1,
 } as const;
 
+export const POINTER_EVENTS = {
+  enabled: "all",
+  disabled: "none",
+  // asserted as any so it can be freely assigned to React Element
+  // "pointerEnvets" CSS prop
+  inheritFromUI: "var(--ui-pointerEvents)" as any,
+} as const;
+
 export enum EVENT {
   COPY = "copy",
   PASTE = "paste",
@@ -63,6 +71,7 @@ export enum EVENT {
   GESTURE_START = "gesturestart",
   GESTURE_CHANGE = "gesturechange",
   POINTER_MOVE = "pointermove",
+  POINTER_DOWN = "pointerdown",
   POINTER_UP = "pointerup",
   STATE_CHANGE = "statechange",
   WHEEL = "wheel",
@@ -74,7 +83,17 @@ export enum EVENT {
   // custom events
   EXCALIDRAW_LINK = "excalidraw-link",
   MENU_ITEM_SELECT = "menu.itemSelect",
+  MESSAGE = "message",
 }
+
+export const YOUTUBE_STATES = {
+  UNSTARTED: -1,
+  ENDED: 0,
+  PLAYING: 1,
+  PAUSED: 2,
+  BUFFERING: 3,
+  CUED: 5,
+} as const;
 
 export const ENV = {
   TEST: "test",
@@ -90,15 +109,33 @@ export const FONT_FAMILY = {
   Virgil: 1,
   Helvetica: 2,
   Cascadia: 3,
+  Assistant: 4,
 };
 
 export const THEME = {
   LIGHT: "light",
   DARK: "dark",
+} as const;
+
+export const FRAME_STYLE = {
+  strokeColor: "#bbb" as ExcalidrawElement["strokeColor"],
+  strokeWidth: 2 as ExcalidrawElement["strokeWidth"],
+  strokeStyle: "solid" as ExcalidrawElement["strokeStyle"],
+  fillStyle: "solid" as ExcalidrawElement["fillStyle"],
+  roughness: 0 as ExcalidrawElement["roughness"],
+  roundness: null as ExcalidrawElement["roundness"],
+  backgroundColor: "transparent" as ExcalidrawElement["backgroundColor"],
+  radius: 8,
+  nameOffsetY: 3,
+  nameColorLightTheme: "#999999",
+  nameColorDarkTheme: "#7a7a7a",
+  nameFontSize: 14,
+  nameLineHeight: 1.25,
 };
 
 export const WINDOWS_EMOJI_FALLBACK_FONT = "Segoe UI Emoji";
 
+export const MIN_FONT_SIZE = 1;
 export const DEFAULT_FONT_SIZE = 20;
 export const DEFAULT_FONT_FAMILY: FontFamilyValues = FONT_FAMILY.Virgil;
 export const DEFAULT_TEXT_ALIGN = "left";
@@ -120,6 +157,8 @@ export const IMAGE_MIME_TYPES = {
   avif: "image/avif",
   jfif: "image/jfif",
 } as const;
+
+export const ALLOWED_PASTE_MIME_TYPES = ["text/plain", "text/html"] as const;
 
 export const MIME_TYPES = {
   json: "application/json",
@@ -145,6 +184,7 @@ export const EXPORT_DATA_TYPES = {
   excalidraw: "excalidraw",
   excalidrawClipboard: "excalidraw/clipboard",
   excalidrawLibrary: "excalidrawlib",
+  excalidrawClipboardWithAPI: "excalidraw-api/clipboard",
 } as const;
 
 export const EXPORT_SOURCE =
@@ -186,12 +226,13 @@ export const DEFAULT_UI_OPTIONS: AppProps["UIOptions"] = {
     toggleTheme: null,
     saveAsImage: true,
   },
+  tools: {
+    image: true,
+  },
 };
 
 // breakpoints
 // -----------------------------------------------------------------------------
-// sm screen
-export const MQ_SM_MAX_WIDTH = 640;
 // md screen
 export const MQ_MAX_WIDTH_PORTRAIT = 730;
 export const MQ_MAX_WIDTH_LANDSCAPE = 1000;
@@ -221,6 +262,8 @@ export const VERSIONS = {
 } as const;
 
 export const BOUND_TEXT_PADDING = 5;
+export const ARROW_LABEL_WIDTH_FRACTION = 0.7;
+export const ARROW_LABEL_FONT_SIZE_TO_MIN_WIDTH_RATIO = 11;
 
 export const VERTICAL_ALIGN = {
   TOP: "top",
@@ -266,6 +309,18 @@ export const ROUNDNESS = {
  * collaboration */
 export const PRECEDING_ELEMENT_KEY = "__precedingElement__";
 
+export const ROUGHNESS = {
+  architect: 0,
+  artist: 1,
+  cartoonist: 2,
+} as const;
+
+export const STROKE_WIDTH = {
+  thin: 1,
+  bold: 2,
+  extraBold: 4,
+} as const;
+
 export const DEFAULT_ELEMENT_PROPS: {
   strokeColor: ExcalidrawElement["strokeColor"];
   backgroundColor: ExcalidrawElement["backgroundColor"];
@@ -278,10 +333,10 @@ export const DEFAULT_ELEMENT_PROPS: {
 } = {
   strokeColor: COLOR_PALETTE.black,
   backgroundColor: COLOR_PALETTE.transparent,
-  fillStyle: "hachure",
-  strokeWidth: 1,
+  fillStyle: "solid",
+  strokeWidth: 2,
   strokeStyle: "solid",
-  roughness: 1,
+  roughness: ROUGHNESS.artist,
   opacity: 100,
   locked: false,
 };
@@ -292,3 +347,5 @@ export const DEFAULT_SIDEBAR = {
   name: "default",
   defaultTab: LIBRARY_SIDEBAR_TAB,
 } as const;
+
+export const LIBRARY_DISABLED_TYPES = new Set(["embeddable", "image"] as const);

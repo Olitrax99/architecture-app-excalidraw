@@ -40,10 +40,6 @@
     "arrowhead_triangle": "Trekant",
     "fontSize": "Skriftstorleik",
     "fontFamily": "Skrifttype",
-    "onlySelected": "Kun valde",
-    "withBackground": "Bakgrunn",
-    "exportEmbedScene": "Bygg inn scene",
-    "exportEmbedScene_details": "Scenedata vert lagra i den eksporterte PNG- eller SVG-fila slik at scena kan bli gjenopprettast frå den. Dette vil auke eksportert filstorleik.",
     "addWatermark": "Legg til «Laga med Excalidraw»",
     "handDrawn": "Handteikna",
     "normal": "Normal",
@@ -100,7 +96,6 @@
     "flipHorizontal": "Vipp vassrett",
     "flipVertical": "Vipp loddrett",
     "viewMode": "Visningsmodus",
-    "toggleExportColorScheme": "Veksle eksport av fargepalett",
     "share": "Del",
     "showStroke": "Vis fargeveljar for linjer",
     "showBackground": "Vis fargeveljar for bakgrunn",
@@ -114,8 +109,12 @@
     "createContainerFromText": "",
     "link": {
       "edit": "Rediger lenke",
+      "editEmbed": "",
       "create": "Lag lenke",
-      "label": "Lenke"
+      "createEmbed": "",
+      "label": "Lenke",
+      "labelEmbed": "",
+      "empty": ""
     },
     "lineEditor": {
       "edit": "",
@@ -128,7 +127,10 @@
       "unlockAll": ""
     },
     "statusPublished": "",
-    "sidebarLock": ""
+    "sidebarLock": "",
+    "selectAllElementsInFrame": "",
+    "removeAllElementsFromFrame": "",
+    "eyeDropper": ""
   },
   "library": {
     "noItems": "",
@@ -140,11 +142,7 @@
     "exportJSON": "Eksporter til fil",
     "exportImage": "",
     "export": "",
-    "exportToPng": "Eksporter til PNG",
-    "exportToSvg": "Eksporter til SVG",
     "copyToClipboard": "Kopier til utklippstavla",
-    "copyPngToClipboard": "Kopier PNG til utklippstavla",
-    "scale": "Skaler",
     "save": "Lagre til noverande fil",
     "saveAs": "Lagre som",
     "load": "",
@@ -166,13 +164,16 @@
     "darkMode": "Mørk modus",
     "lightMode": "Lys modus",
     "zenMode": "Zen-modus",
+    "objectsSnapMode": "",
     "exitZenMode": "Avslutt zen-modus",
     "cancel": "Avbryt",
     "clear": "Tøm",
     "remove": "Fjern",
+    "embed": "",
     "publishLibrary": "Publiser",
     "submit": "Send inn",
-    "confirm": "Stadfest"
+    "confirm": "Stadfest",
+    "embeddableInteractionButton": ""
   },
   "alerts": {
     "clearReset": "Dette vil tømme lerretet. Er du sikker?",
@@ -202,6 +203,7 @@
     "imageInsertError": "Kunne ikkje sette inn biletet. Prøv igjen seinare...",
     "fileTooBig": "Fila er for stor. Maksimal tillate storleik er {{maxSize}}.",
     "svgImageInsertError": "Kunne ikkje sette inn SVG-biletet. SVG-koden ser ugyldig ut.",
+    "failedToFetchImage": "",
     "invalidSVGString": "Ugyldig SVG.",
     "cannotResolveCollabServer": "Kunne ikkje kople til samarbeidsserveren. Ver vennleg å oppdatere inn sida og prøv på nytt.",
     "importLibraryError": "",
@@ -212,6 +214,10 @@
       "line2": "",
       "line3": "",
       "line4": ""
+    },
+    "libraryElementTypeError": {
+      "embeddable": "",
+      "image": ""
     }
   },
   "toolBar": {
@@ -229,7 +235,11 @@
     "penMode": "",
     "link": "Legg til/ oppdater lenke til valt figur",
     "eraser": "Viskelêr",
-    "hand": ""
+    "frame": "",
+    "embeddable": "",
+    "laser": "",
+    "hand": "",
+    "extraTools": ""
   },
   "headings": {
     "canvasActions": "Handlingar: lerret",
@@ -241,6 +251,7 @@
     "linearElement": "Klikk for å starte linje med fleire punkt, eller drag for ei enkel linje",
     "freeDraw": "Klikk og drag, slepp når du er ferdig",
     "text": "Tips: du kan òg leggje til tekst ved å dobbeltklikke kor som helst med utvalgsverktyet",
+    "embeddable": "",
     "text_selected": "Dobbelklikk eller trykk ENTER for å redigere teksta",
     "text_editing": "Trykk Escape eller CtrlOrCmd+ENTER for å fullføre redigeringa",
     "linearElementMulti": "Klikk på siste punkt eller trykk Escape eller Enter for å fullføre",
@@ -256,7 +267,8 @@
     "bindTextToElement": "Trykk på enter for å legge til tekst",
     "deepBoxSelect": "Hald inne Ctrl / Cmd for å velje djupt, og forhindre flytting",
     "eraserRevert": "Hald inne Alt for å reversere markering av element for sletting",
-    "firefox_clipboard_write": ""
+    "firefox_clipboard_write": "",
+    "disableSnapping": ""
   },
   "canvasError": {
     "cannotShowPreview": "Kan ikkje vise førehandsvising",
@@ -363,6 +375,30 @@
     "resetLibrary": "Tilbakestill bibliotek",
     "removeItemsFromLib": "Fjern valde element frå biblioteket"
   },
+  "imageExportDialog": {
+    "header": "",
+    "label": {
+      "withBackground": "",
+      "onlySelected": "",
+      "darkMode": "",
+      "embedScene": "",
+      "scale": "",
+      "padding": ""
+    },
+    "tooltip": {
+      "embedScene": ""
+    },
+    "title": {
+      "exportToPng": "",
+      "exportToSvg": "",
+      "copyPngToClipboard": ""
+    },
+    "button": {
+      "exportToPng": "",
+      "exportToSvg": "",
+      "copyPngToClipboard": ""
+    }
+  },
   "encrypted": {
     "tooltip": "Teikningane dine er ende-til-ende-krypterte slik at Excalidraw sine serverar aldri får sjå dei.",
     "link": "Blogginnlegg om ende-til-ende-kryptering i Excalidraw"
@@ -391,7 +427,9 @@
     "fileSavedToFilename": "Lagra som {filename}",
     "canvas": "lerret",
     "selection": "val",
-    "pasteAsSingleElement": ""
+    "pasteAsSingleElement": "",
+    "unableToEmbed": "",
+    "unrecognizedLinkFormat": ""
   },
   "colors": {
     "transparent": "Gjennomsiktig",
@@ -429,5 +467,36 @@
     "shades": "",
     "hexCode": "",
     "noShades": ""
+  },
+  "overwriteConfirm": {
+    "action": {
+      "exportToImage": {
+        "title": "",
+        "button": "",
+        "description": ""
+      },
+      "saveToDisk": {
+        "title": "",
+        "button": "",
+        "description": ""
+      },
+      "excalidrawPlus": {
+        "title": "",
+        "button": "",
+        "description": ""
+      }
+    },
+    "modal": {
+      "loadFromFile": {
+        "title": "",
+        "button": "",
+        "description": ""
+      },
+      "shareableLink": {
+        "title": "",
+        "button": "",
+        "description": ""
+      }
+    }
   }
 }

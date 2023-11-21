@@ -40,10 +40,6 @@
     "arrowhead_triangle": "Akerdis",
     "fontSize": "Tiddi n tsefsit",
     "fontFamily": "Tawacult n tsefsiyin",
-    "onlySelected": "Tafrayt kan",
-    "withBackground": "Agilal",
-    "exportEmbedScene": "Sleɣ asayes",
-    "exportEmbedScene_details": "Asayes ad yettwasekles deg ufaylu n usifeḍ PNG/SVG akken akken ad yili wamek ara d-yettwarr seg-s usayes. Ayagi ad isimɣur tiddi n ufaylu n usifeḍ.",
     "addWatermark": "Seddu \"Yettwaxdem s Excalidraw\"",
     "handDrawn": "Asuneɣ s ufus",
     "normal": "Amagnu",
@@ -100,7 +96,6 @@
     "flipHorizontal": "Tuttya taglawant",
     "flipVertical": "Tuttya tubdidt",
     "viewMode": "Askar n tmuɣli",
-    "toggleExportColorScheme": "Sermed/sens asifeḍ usentel n yini",
     "share": "Bḍu",
     "showStroke": "Beqqeḍ amelqaḍ n yini n yizirig",
     "showBackground": "Beqqeḍ amelqaḍ n yini n ugilal",
@@ -114,8 +109,12 @@
     "createContainerFromText": "",
     "link": {
       "edit": "Ẓreg aseɣwen",
+      "editEmbed": "",
       "create": "Snulfu-d aseɣwen",
-      "label": "Aseɣwen"
+      "createEmbed": "",
+      "label": "Aseɣwen",
+      "labelEmbed": "",
+      "empty": ""
     },
     "lineEditor": {
       "edit": "Ẓreg izirig",
@@ -128,7 +127,10 @@
       "unlockAll": "Serreḥ akk"
     },
     "statusPublished": "Yeffeɣ-d",
-    "sidebarLock": "Eǧǧ afeggag n yidis yeldi"
+    "sidebarLock": "Eǧǧ afeggag n yidis yeldi",
+    "selectAllElementsInFrame": "",
+    "removeAllElementsFromFrame": "",
+    "eyeDropper": ""
   },
   "library": {
     "noItems": "Ulac iferdisen yettwarnan yakan...",
@@ -140,11 +142,7 @@
     "exportJSON": "Sifeḍ afaylu",
     "exportImage": "Sifeḍ tugna...",
     "export": "Sekles di...",
-    "exportToPng": "Sifeḍ ɣer PNG",
-    "exportToSvg": "Sifeḍ ɣer SVG",
     "copyToClipboard": "Nɣel ɣer tecfawit",
-    "copyPngToClipboard": "Nɣel PNG ɣer tecfawit",
-    "scale": "Taskala",
     "save": "Sekles deg ufaylu amiran",
     "saveAs": "Sekles am",
     "load": "Ldi",
@@ -166,13 +164,16 @@
     "darkMode": "Askar imsulles",
     "lightMode": "Askar afaw",
     "zenMode": "Askar Zen",
+    "objectsSnapMode": "",
     "exitZenMode": "Ffeɣ seg uskar Zen",
     "cancel": "Sefsex",
     "clear": "Sfeḍ",
     "remove": "Kkes",
+    "embed": "",
     "publishLibrary": "Ẓreg",
     "submit": "Azen",
-    "confirm": "Sentem"
+    "confirm": "Sentem",
+    "embeddableInteractionButton": ""
   },
   "alerts": {
     "clearReset": "Ayagi ad isfeḍ akk taɣzut n usuneɣ. Tetḥeqqeḍ?",
@@ -202,6 +203,7 @@
     "imageInsertError": "D awezɣi tugra n tugna. Eɛreḍ tikkelt-nniḍen ardeqqal...",
     "fileTooBig": "Afaylu meqqer aṭas. Tiddi tafellayt yurgen d {{maxSize}}.",
     "svgImageInsertError": "D awezɣi tugra n tugna SVG. Acraḍ SVG yettban-d d armeɣtu.",
+    "failedToFetchImage": "",
     "invalidSVGString": "SVG armeɣtu.",
     "cannotResolveCollabServer": "Ulamek tuqqna s aqeddac n umyalel. Ma ulac uɣilif ales asali n usebter sakin eɛreḍ tikkelt-nniḍen.",
     "importLibraryError": "Ur d-ssalay ara tamkarḍit",
@@ -212,6 +214,10 @@
       "line2": "Ayagi yezmer ad d-iglu s truẓi n<bold>Iferdisen n uḍris</bold>deg wunuɣen-inek.",
       "line3": "Ad k-nsemter ad tsexsiḍ aɣewwar-agi. Tzemreḍ ad tḍefreḍ<link>isurifen-agi</link> ɣef wamek ara txedmeḍ.",
       "line4": ""
+    },
+    "libraryElementTypeError": {
+      "embeddable": "",
+      "image": ""
     }
   },
   "toolBar": {
@@ -229,7 +235,11 @@
     "penMode": "Askar n yimru - gdel tanalit",
     "link": "Rnu/leqqem aseɣwen i talɣa yettwafernen",
     "eraser": "Sfeḍ",
-    "hand": "Afus (afecku n usmutti n tmuɣli)"
+    "frame": "",
+    "embeddable": "",
+    "laser": "",
+    "hand": "Afus (afecku n usmutti n tmuɣli)",
+    "extraTools": ""
   },
   "headings": {
     "canvasActions": "Tigawin n teɣzut n usuneɣ",
@@ -241,6 +251,7 @@
     "linearElement": "Ssit akken ad tebduḍ aṭas n tenqiḍin, zuɣer i yiwen n yizirig",
     "freeDraw": "Ssit yerna zuɣer, serreḥ ticki tfukeḍ",
     "text": "Tixidest: tzemreḍ daɣen ad ternuḍ aḍris s usiti snat n tikkal anida tebɣiḍ s ufecku n tefrayt",
+    "embeddable": "",
     "text_selected": "Ssit snat n tikkal neɣ ssed taqeffalt Kcem akken ad tẓergeḍ aḍris",
     "text_editing": "Ssit Escape neɣ CtrlOrCmd+ENTER akken ad tfakkeḍ asiẓreg",
     "linearElementMulti": "Ssit ɣef tenqiḍt taneggarut neɣ ssed taqeffalt Escape neɣ taqeffalt Kcem akken ad tfakkeḍ",
@@ -256,7 +267,8 @@
     "bindTextToElement": "Ssed ɣef kcem akken ad ternuḍ aḍris",
     "deepBoxSelect": "Ṭṭef CtrlOrCmd akken ad tferneḍ s telqey, yerna ad trewleḍ i uzuɣer",
     "eraserRevert": "Ssed Alt akken ad tsefsxeḍ iferdisen yettwacerḍen i tukksa",
-    "firefox_clipboard_write": ""
+    "firefox_clipboard_write": "",
+    "disableSnapping": ""
   },
   "canvasError": {
     "cannotShowPreview": "Ulamek abeqqeḍ n teskant",
@@ -363,6 +375,30 @@
     "resetLibrary": "Ales awennez n temkarḍit",
     "removeItemsFromLib": "Kkes iferdisen yettafernen si temkarḍit"
   },
+  "imageExportDialog": {
+    "header": "",
+    "label": {
+      "withBackground": "",
+      "onlySelected": "",
+      "darkMode": "",
+      "embedScene": "",
+      "scale": "",
+      "padding": ""
+    },
+    "tooltip": {
+      "embedScene": ""
+    },
+    "title": {
+      "exportToPng": "",
+      "exportToSvg": "",
+      "copyPngToClipboard": ""
+    },
+    "button": {
+      "exportToPng": "",
+      "exportToSvg": "",
+      "copyPngToClipboard": ""
+    }
+  },
   "encrypted": {
     "tooltip": "Unuɣen-inek (m) ttuwgelhnen seg yixef s ixef dɣa iqeddacen n Excalidraw werǧin ad ten-walin. ",
     "link": "Amagrad ɣef uwgelhen ixef s ixef di Excalidraw"
@@ -391,7 +427,9 @@
     "fileSavedToFilename": "Yettwasekles di {filename}",
     "canvas": "taɣzut n usuneɣ",
     "selection": "tafrayt",
-    "pasteAsSingleElement": ""
+    "pasteAsSingleElement": "",
+    "unableToEmbed": "",
+    "unrecognizedLinkFormat": ""
   },
   "colors": {
     "transparent": "Afrawan",
@@ -429,5 +467,36 @@
     "shades": "",
     "hexCode": "",
     "noShades": ""
+  },
+  "overwriteConfirm": {
+    "action": {
+      "exportToImage": {
+        "title": "",
+        "button": "",
+        "description": ""
+      },
+      "saveToDisk": {
+        "title": "",
+        "button": "",
+        "description": ""
+      },
+      "excalidrawPlus": {
+        "title": "",
+        "button": "",
+        "description": ""
+      }
+    },
+    "modal": {
+      "loadFromFile": {
+        "title": "",
+        "button": "",
+        "description": ""
+      },
+      "shareableLink": {
+        "title": "",
+        "button": "",
+        "description": ""
+      }
+    }
   }
 }

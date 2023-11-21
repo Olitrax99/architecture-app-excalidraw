@@ -40,10 +40,6 @@
     "arrowhead_triangle": "משולש",
     "fontSize": "גודל גופן",
     "fontFamily": "גופן",
-    "onlySelected": "רק מה שנבחר",
-    "withBackground": "רקע",
-    "exportEmbedScene": "הטמעה של מידע הסצנה",
-    "exportEmbedScene_details": "הייצוא יבוצע לקובץ מסוג PNG/SVG כדי שהמידע על הסצנה ישמר בו וניתן יהיה לבצע שחזור ממנו.\nיגדיל את גודל הקובץ של הייצוא.",
     "addWatermark": "הוסף \"נוצר באמצעות Excalidraw\"",
     "handDrawn": "ציור יד",
     "normal": "רגיל",
@@ -54,7 +50,7 @@
     "veryLarge": "גדול מאוד",
     "solid": "מוצק",
     "hachure": "קווים מקבילים קצרים להצגת כיוון וחדות שיפוע במפה",
-    "zigzag": "",
+    "zigzag": "זיגזג",
     "crossHatch": "קווים מוצלבים שתי וערב",
     "thin": "דק",
     "bold": "מודגש",
@@ -100,7 +96,6 @@
     "flipHorizontal": "הפוך אופקית",
     "flipVertical": "הפוך אנכית",
     "viewMode": "מצב תצוגה",
-    "toggleExportColorScheme": "מתג ערכת צבעים לייצוא",
     "share": "שתף",
     "showStroke": "הצג בוחר צבע מברשת",
     "showBackground": "הצג בוחר צבע רקע",
@@ -114,8 +109,12 @@
     "createContainerFromText": "ארוז טקסט במיכל",
     "link": {
       "edit": "עריכת קישור",
+      "editEmbed": "ערוך קישור ושבץ",
       "create": "יצירת קישור",
-      "label": "קישור"
+      "createEmbed": "צור קישור ושבץ",
+      "label": "קישור",
+      "labelEmbed": "קשר ושבץ",
+      "empty": "לא נקבע קישור"
     },
     "lineEditor": {
       "edit": "ערוך קו",
@@ -128,7 +127,10 @@
       "unlockAll": "שחרור הכול"
     },
     "statusPublished": "פורסם",
-    "sidebarLock": "שמור את סרגל הצד פתוח"
+    "sidebarLock": "שמור את סרגל הצד פתוח",
+    "selectAllElementsInFrame": "בחר את כל האלמנטים במסגרת",
+    "removeAllElementsFromFrame": "הסר את כל האלמנטים שבמסגרת",
+    "eyeDropper": ""
   },
   "library": {
     "noItems": "עוד לא הוספת דברים...",
@@ -140,11 +142,7 @@
     "exportJSON": "ייצא לקובץ",
     "exportImage": "ייצוא התמונה...",
     "export": "שמור ל...",
-    "exportToPng": "יצא ל PNG",
-    "exportToSvg": "יצא ל SVG",
     "copyToClipboard": "העתק ללוח",
-    "copyPngToClipboard": "העתק PNG ללוח",
-    "scale": "קנה מידה",
     "save": "שמור לקובץ נוכחי",
     "saveAs": "שמירה בשם",
     "load": "פתח",
@@ -166,13 +164,16 @@
     "darkMode": "מצב כהה",
     "lightMode": "מצב בהיר",
     "zenMode": "מצב זן",
+    "objectsSnapMode": "",
     "exitZenMode": "צא ממצב זן",
     "cancel": "ביטול",
     "clear": "ניקוי",
     "remove": "הסר",
+    "embed": "",
     "publishLibrary": "פרסום",
     "submit": "שליחה",
-    "confirm": "אשר"
+    "confirm": "אשר",
+    "embeddableInteractionButton": ""
   },
   "alerts": {
     "clearReset": "פעולה זו תנקה את כל הקנבס. אתה בטוח?",
@@ -202,6 +203,7 @@
     "imageInsertError": "לא ניתן היה להוסיף את התמונה. אנא נסה שוב מאוחר יותר...",
     "fileTooBig": "הקובץ גדול מדי. הגודל המירבי המותר הינו {{maxSize}}.",
     "svgImageInsertError": "לא ניתן היה להוסיף את תמונת ה-SVG. הסימונים בתוך קובץ ה-SVG עשויים להיות שגויים.",
+    "failedToFetchImage": "",
     "invalidSVGString": "SVG שגוי.",
     "cannotResolveCollabServer": "לא הצלחתי להתחבר לשרת השיתוף. אנא רענן את הדף ונסה שוב.",
     "importLibraryError": "לא ניתן היה לטעון את הספריה",
@@ -212,6 +214,10 @@
       "line2": "",
       "line3": "",
       "line4": ""
+    },
+    "libraryElementTypeError": {
+      "embeddable": "",
+      "image": ""
     }
   },
   "toolBar": {
@@ -229,7 +235,11 @@
     "penMode": "מצב עט - מנע נגיעה",
     "link": "הוספה/עדכון קישור של הצורה שנבחרה",
     "eraser": "מחק",
-    "hand": "יד (כלי הזזה)"
+    "frame": "",
+    "embeddable": "",
+    "laser": "",
+    "hand": "יד (כלי הזזה)",
+    "extraTools": ""
   },
   "headings": {
     "canvasActions": "פעולות קנבאס",
@@ -241,6 +251,7 @@
     "linearElement": "לחץ להתחלת מספר נקודות, גרור לקו יחיד",
     "freeDraw": "לחץ וגרור, שחרר כשסיימת",
     "text": "טיפ: אפשר להוסיף טקסט על ידי לחיצה כפולה בכל מקום עם כלי הבחירה",
+    "embeddable": "",
     "text_selected": "לחץ לחיצה כפולה או הקש על אנטר לעריכת הטקסט",
     "text_editing": "כדי לסיים את העריכה לחץ על מקש Escape או על Ctrl (Cmd במחשבי אפל) ומקש Enter",
     "linearElementMulti": "הקלק על הנקודה האחרונה או הקש Escape או Enter לסיום",
@@ -256,7 +267,8 @@
     "bindTextToElement": "הקש Enter כדי להוספת טקסט",
     "deepBoxSelect": "החזק Ctrl / Cmd לבחירה עמוקה ולמניעת גרירה",
     "eraserRevert": "החזק Alt להחזרת רכיבים מסומנים למחיקה",
-    "firefox_clipboard_write": "יכולות זה ניתנת להפעלה על ידי שינוי הדגל של \"dom.events.asyncClipboard.clipboardItem\" למצב \"true\". כדי לשנות את הדגל בדפדפן Firefox, בקר בעמוד ״about:config״."
+    "firefox_clipboard_write": "יכולות זה ניתנת להפעלה על ידי שינוי הדגל של \"dom.events.asyncClipboard.clipboardItem\" למצב \"true\". כדי לשנות את הדגל בדפדפן Firefox, בקר בעמוד ״about:config״.",
+    "disableSnapping": ""
   },
   "canvasError": {
     "cannotShowPreview": "לא ניתן להראות תצוגה מקדימה",
@@ -363,6 +375,30 @@
     "resetLibrary": "איפוס ספריה",
     "removeItemsFromLib": "הסר את הפריטים הנבחרים מהספריה"
   },
+  "imageExportDialog": {
+    "header": "",
+    "label": {
+      "withBackground": "",
+      "onlySelected": "",
+      "darkMode": "",
+      "embedScene": "",
+      "scale": "",
+      "padding": ""
+    },
+    "tooltip": {
+      "embedScene": ""
+    },
+    "title": {
+      "exportToPng": "",
+      "exportToSvg": "",
+      "copyPngToClipboard": ""
+    },
+    "button": {
+      "exportToPng": "",
+      "exportToSvg": "",
+      "copyPngToClipboard": ""
+    }
+  },
   "encrypted": {
     "tooltip": "הציורים שלך מוצפנים מקצה לקצה כך שהשרתים של Excalidraw לא יראו אותם לעולם.",
     "link": "פוסט בבלוג על הצפנה מקצה לקצב ב-Excalidraw"
@@ -391,7 +427,9 @@
     "fileSavedToFilename": "נשמר לקובץ {filename}",
     "canvas": "קנבאס",
     "selection": "בחירה",
-    "pasteAsSingleElement": "השתמש ב- {{shortcut}} כדי להדביק כפריט יחיד,\nאו הדבק לתוך עורך טקסט קיים"
+    "pasteAsSingleElement": "השתמש ב- {{shortcut}} כדי להדביק כפריט יחיד,\nאו הדבק לתוך עורך טקסט קיים",
+    "unableToEmbed": "",
+    "unrecognizedLinkFormat": ""
   },
   "colors": {
     "transparent": "שקוף",
@@ -429,5 +467,36 @@
     "shades": "",
     "hexCode": "",
     "noShades": ""
+  },
+  "overwriteConfirm": {
+    "action": {
+      "exportToImage": {
+        "title": "",
+        "button": "",
+        "description": ""
+      },
+      "saveToDisk": {
+        "title": "",
+        "button": "",
+        "description": ""
+      },
+      "excalidrawPlus": {
+        "title": "",
+        "button": "",
+        "description": ""
+      }
+    },
+    "modal": {
+      "loadFromFile": {
+        "title": "",
+        "button": "",
+        "description": ""
+      },
+      "shareableLink": {
+        "title": "",
+        "button": "",
+        "description": ""
+      }
+    }
   }
 }

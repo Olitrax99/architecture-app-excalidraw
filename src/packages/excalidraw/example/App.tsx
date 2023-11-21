@@ -26,7 +26,7 @@ import {
   LibraryItems,
   PointerDownState as ExcalidrawPointerDownState,
 } from "../../../types";
-import { NonDeletedExcalidrawElement } from "../../../element/types";
+import { NonDeletedExcalidrawElement, Theme } from "../../../element/types";
 import { ImportedLibraryData } from "../../../data/types";
 import CustomFooter from "./CustomFooter";
 import MobileFooter from "./MobileFooter";
@@ -75,6 +75,7 @@ const {
   WelcomeScreen,
   MainMenu,
   LiveCollaborationTrigger,
+  convertToExcalidrawElements,
 } = window.ExcalidrawLib;
 
 const COMMENT_ICON_DIMENSION = 32;
@@ -96,7 +97,8 @@ export default function App({ appTitle, useCustom, customArgs }: AppProps) {
   const [canvasUrl, setCanvasUrl] = useState<string>("");
   const [exportWithDarkMode, setExportWithDarkMode] = useState(false);
   const [exportEmbedScene, setExportEmbedScene] = useState(false);
-  const [theme, setTheme] = useState("light");
+  const [theme, setTheme] = useState<Theme>("light");
+  const [disableImageTool, setDisableImageTool] = useState(false);
   const [isCollaborating, setIsCollaborating] = useState(false);
   const [commentIcons, setCommentIcons] = useState<{ [id: string]: Comment }>(
     {},
@@ -140,7 +142,10 @@ export default function App({ appTitle, useCustom, customArgs }: AppProps) {
         ];
 
         //@ts-ignore
-        initialStatePromiseRef.current.promise.resolve(initialData);
+        initialStatePromiseRef.current.promise.resolve({
+          ...initialData,
+          elements: convertToExcalidrawElements(initialData.elements),
+        });
         excalidrawAPI.addFiles(imagesArray);
       };
     };
@@ -184,37 +189,40 @@ export default function App({ appTitle, useCustom, customArgs }: AppProps) {
   const updateScene = () => {
     const sceneData = {
       elements: restoreElements(
-        [
+        convertToExcalidrawElements([
           {
             type: "rectangle",
-            version: 141,
-            versionNonce: 361174001,
-            isDeleted: false,
-            id: "oDVXy8D6rom3H1-LLH2-f",
+            id: "rect-1",
             fillStyle: "hachure",
             strokeWidth: 1,
             strokeStyle: "solid",
             roughness: 1,
-            opacity: 100,
             angle: 0,
             x: 100.50390625,
             y: 93.67578125,
             strokeColor: "#c92a2a",
-            backgroundColor: "transparent",
             width: 186.47265625,
             height: 141.9765625,
             seed: 1968410350,
-            groupIds: [],
-            boundElements: null,
-            locked: false,
-            link: null,
-            updated: 1,
             roundness: {
               type: ROUNDNESS.ADAPTIVE_RADIUS,
               value: 32,
             },
           },
-        ],
+          {
+            type: "arrow",
+            x: 300,
+            y: 150,
+            start: { id: "rect-1" },
+            end: { type: "ellipse" },
+          },
+          {
+            type: "text",
+            x: 300,
+            y: 100,
+            text: "HELLO WORLD!",
+          },
+        ]),
         null,
       ),
       appState: {
@@ -594,14 +602,20 @@ export default function App({ appTitle, useCustom, customArgs }: AppProps) {
               type="checkbox"
               checked={theme === "dark"}
               onChange={() => {
-                let newTheme = "light";
-                if (theme === "light") {
-                  newTheme = "dark";
-                }
-                setTheme(newTheme);
+                setTheme(theme === "light" ? "dark" : "light");
               }}
             />
             Switch to Dark Theme
+          </label>
+          <label>
+            <input
+              type="checkbox"
+              checked={disableImageTool === true}
+              onChange={() => {
+                setDisableImageTool(!disableImageTool);
+              }}
+            />
+            Disable Image Tool
           </label>
           <label>
             <input
@@ -662,7 +676,9 @@ export default function App({ appTitle, useCustom, customArgs }: AppProps) {
         </div>
         <div className="excalidraw-wrapper">
           <Excalidraw
-            ref={(api: ExcalidrawImperativeAPI) => setExcalidrawAPI(api)}
+            excalidrawAPI={(api: ExcalidrawImperativeAPI) =>
+              setExcalidrawAPI(api)
+            }
             initialData={initialStatePromiseRef.current.promise}
             onChange={(elements, state) => {
               console.info("Elements :", elements, "State : ", state);
@@ -677,11 +693,18 @@ export default function App({ appTitle, useCustom, customArgs }: AppProps) {
             gridModeEnabled={gridModeEnabled}
             theme={theme}
             name="Custom name of drawing"
-            UIOptions={{ canvasActions: { loadScene: false } }}
+            UIOptions={{
+              canvasActions: {
+                loadScene: false,
+              },
+              tools: { image: !disableImageTool },
+            }}
             renderTopRightUI={renderTopRightUI}
             onLinkOpen={onLinkOpen}
             onPointerDown={onPointerDown}
             onScrollChange={rerenderCommentIcons}
+            // allow all urls
+            validateEmbeddable={true}
           >
             {excalidrawAPI && (
               <Footer>
@@ -783,7 +806,6 @@ export default function App({ appTitle, useCustom, customArgs }: AppProps) {
           <div className="export export-blob">
             <img src={blobUrl} alt="" />
           </div>
-
           <button
             onClick={async () => {
               if (!excalidrawAPI) {
@@ -804,6 +826,78 @@ export default function App({ appTitle, useCustom, customArgs }: AppProps) {
             }}
           >
             Export to Canvas
+          </button>
+          <button
+            onClick={async () => {
+              if (!excalidrawAPI) {
+                return;
+              }
+              const canvas = await exportToCanvas({
+                elements: excalidrawAPI.getSceneElements(),
+                appState: {
+                  ...initialData.appState,
+                  exportWithDarkMode,
+                },
+                files: excalidrawAPI.getFiles(),
+              });
+              const ctx = canvas.getContext("2d")!;
+              ctx.font = "30px Virgil";
+              ctx.strokeText("My custom text", 50, 60);
+              setCanvasUrl(canvas.toDataURL());
+            }}
+          >
+            Export to Canvas
+          </button>
+          <button
+            type="button"
+            onClick={() => {
+              if (!excalidrawAPI) {
+                return;
+              }
+
+              const elements = excalidrawAPI.getSceneElements();
+              excalidrawAPI.scrollToContent(elements[0], {
+                fitToViewport: true,
+              });
+            }}
+          >
+            Fit to viewport, first element
+          </button>
+          <button
+            type="button"
+            onClick={() => {
+              if (!excalidrawAPI) {
+                return;
+              }
+
+              const elements = excalidrawAPI.getSceneElements();
+              excalidrawAPI.scrollToContent(elements[0], {
+                fitToContent: true,
+              });
+
+              excalidrawAPI.scrollToContent(elements[0], {
+                fitToContent: true,
+              });
+            }}
+          >
+            Fit to content, first element
+          </button>
+          <button
+            type="button"
+            onClick={() => {
+              if (!excalidrawAPI) {
+                return;
+              }
+
+              const elements = excalidrawAPI.getSceneElements();
+              excalidrawAPI.scrollToContent(elements[0], {
+                fitToContent: true,
+              });
+
+              excalidrawAPI.scrollToContent(elements[0]);
+            }}
+          >
+            Scroll to first element, no fitToContent, no fitToViewport
           </button>
           <div className="export export-canvas">
             <img src={canvasUrl} alt="" />

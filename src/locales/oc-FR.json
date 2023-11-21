@@ -40,10 +40,6 @@
     "arrowhead_triangle": "Triangle",
     "fontSize": "Talha polissa",
     "fontFamily": "Familha de polissa",
-    "onlySelected": "Seleccion sonque",
-    "withBackground": "Rèireplan",
-    "exportEmbedScene": "Scèna embarcada",
-    "exportEmbedScene_details": "Las donadas de scèna seràn enregistradas dins lo fichièr PNG/SVG exportat, per que la scèna pòsca èsser restaurada a partir d’aqueste fichièr.\nAumentarà la talha del fichièr exportat.",
     "addWatermark": "Apondre « Fabricat amb Excalidraw »",
     "handDrawn": "A la man levada",
     "normal": "Normala",
@@ -100,7 +96,6 @@
     "flipHorizontal": "Virar orizontalament",
     "flipVertical": "Virar verticalament",
     "viewMode": "Mòde de vista",
-    "toggleExportColorScheme": "Alternar l’esquèma de color d’expòrt",
     "share": "Partejar",
     "showStroke": "Mostrar lo selector de color de contorn",
     "showBackground": "Mostrar lo selector de color de fons",
@@ -114,8 +109,12 @@
     "createContainerFromText": "",
     "link": {
       "edit": "Modificar lo ligam",
+      "editEmbed": "",
       "create": "Crear un ligam",
-      "label": "Ligam"
+      "createEmbed": "",
+      "label": "Ligam",
+      "labelEmbed": "",
+      "empty": ""
     },
     "lineEditor": {
       "edit": "Modificar la linha",
@@ -128,7 +127,10 @@
       "unlockAll": "Tot desverrolhar"
     },
     "statusPublished": "Publicat",
-    "sidebarLock": "Gardar la barra laterala dobèrta"
+    "sidebarLock": "Gardar la barra laterala dobèrta",
+    "selectAllElementsInFrame": "",
+    "removeAllElementsFromFrame": "",
+    "eyeDropper": ""
   },
   "library": {
     "noItems": "Cap d’element pas encara apondut...",
@@ -140,11 +142,7 @@
     "exportJSON": "Exportar en fichièr",
     "exportImage": "Exportar imatges...",
     "export": "Enregistrar dins...",
-    "exportToPng": "Exportar en PNG",
-    "exportToSvg": "Exportar en SVG",
     "copyToClipboard": "Copiar al quichapapièrs",
-    "copyPngToClipboard": "Copiar PNG al quichapapièrs",
-    "scale": "Escala",
     "save": "Salvar al fichièr actual",
     "saveAs": "Enregistrar jos",
     "load": "Dobrir",
@@ -166,13 +164,16 @@
     "darkMode": "Mòde escur",
     "lightMode": "Mòde clar",
     "zenMode": "Mòde escur",
+    "objectsSnapMode": "",
     "exitZenMode": "Sortir del mòde zen",
     "cancel": "Anullar",
     "clear": "Escafar",
     "remove": "Tirar",
+    "embed": "",
     "publishLibrary": "Publicar",
     "submit": "Enviar",
-    "confirm": "Confirmar"
+    "confirm": "Confirmar",
+    "embeddableInteractionButton": ""
   },
   "alerts": {
     "clearReset": "Aquò suprimirà lo canabàs complèt. O volètz vertadièrament ?",
@@ -202,6 +203,7 @@
     "imageInsertError": "Insercion d’imatge impossibla. Tornatz ensajar mai tard...",
     "fileTooBig": "Fichièr tròp pesuc. La talha maximala autorizada es {{maxSize}}.",
     "svgImageInsertError": "Insercion d’imatge SVG impossibla. Las balisas SVG semblan invalidas.",
+    "failedToFetchImage": "",
     "invalidSVGString": "SVG invalid.",
     "cannotResolveCollabServer": "Connexion impossibla al servidor collab. Mercés de recargar la pagina e tornar ensajar.",
     "importLibraryError": "Impossible de cargar la bibliotèca",
@@ -212,6 +214,10 @@
       "line2": "",
       "line3": "",
       "line4": ""
+    },
+    "libraryElementTypeError": {
+      "embeddable": "",
+      "image": ""
     }
   },
   "toolBar": {
@@ -229,7 +235,11 @@
     "penMode": "Mòde estilo - empachar lo contact",
     "link": "Apondre/Actualizar lo ligam per una fòrma seleccionada",
     "eraser": "Goma",
-    "hand": "Man (aisina de desplaçament de la vista)"
+    "frame": "",
+    "embeddable": "",
+    "laser": "",
+    "hand": "Man (aisina de desplaçament de la vista)",
+    "extraTools": ""
   },
   "headings": {
     "canvasActions": "Accions del canabàs",
@@ -241,6 +251,7 @@
     "linearElement": "Clicatz per començar mantun punt, lisatz per una sola linha",
     "freeDraw": "Clicatz e lisatz, relargatz un còp acabat",
     "text": "Astúcia : podètz tanben apondre de tèxt en doble clicant ont que siá amb l’aisina de seleccion",
+    "embeddable": "",
     "text_selected": "Clicatz dos còps o quichatz ENTRADA per modificar lo tèxt",
     "text_editing": "Quichatz ESCAPAR o CtrlOrCmd+ENTRADA per acabar la modificacion",
     "linearElementMulti": "Clicatz sul darrièr punt o quichatz Ecap o Entrada per acabar",
@@ -256,7 +267,8 @@
     "bindTextToElement": "Quichatz Entrada per apondre de tèxte",
     "deepBoxSelect": "Gardar CtrlOCmd per una seleccion gropada e empachar lo desplaçament",
     "eraserRevert": "Tenètz quichat Alt per anullar los elements marcats per supression",
-    "firefox_clipboard_write": ""
+    "firefox_clipboard_write": "",
+    "disableSnapping": ""
   },
   "canvasError": {
     "cannotShowPreview": "Afichatge impossible de l’apercebut",
@@ -363,6 +375,30 @@
     "resetLibrary": "Reïnicializar la bibliotèca",
     "removeItemsFromLib": "Tirar los elements seleccionats de la bibliotèca"
   },
+  "imageExportDialog": {
+    "header": "",
+    "label": {
+      "withBackground": "",
+      "onlySelected": "",
+      "darkMode": "",
+      "embedScene": "",
+      "scale": "",
+      "padding": ""
+    },
+    "tooltip": {
+      "embedScene": ""
+    },
+    "title": {
+      "exportToPng": "",
+      "exportToSvg": "",
+      "copyPngToClipboard": ""
+    },
+    "button": {
+      "exportToPng": "",
+      "exportToSvg": "",
+      "copyPngToClipboard": ""
+    }
+  },
   "encrypted": {
     "tooltip": "Vòstres dessenhs son chifrats del cap a la fin en consequéncia los servidors d’Excalidraw los veiràn pas jamai.",
     "link": "Article de blòg sul chiframent del cap a la fin dins Excalidraw"
@@ -391,7 +427,9 @@
     "fileSavedToFilename": "Enregistrat jos {filename}",
     "canvas": "canabàs",
     "selection": "seleccion",
-    "pasteAsSingleElement": ""
+    "pasteAsSingleElement": "",
+    "unableToEmbed": "",
+    "unrecognizedLinkFormat": ""
   },
   "colors": {
     "transparent": "Transparéncia",
@@ -429,5 +467,36 @@
     "shades": "",
     "hexCode": "",
     "noShades": ""
+  },
+  "overwriteConfirm": {
+    "action": {
+      "exportToImage": {
+        "title": "",
+        "button": "",
+        "description": ""
+      },
+      "saveToDisk": {
+        "title": "",
+        "button": "",
+        "description": ""
+      },
+      "excalidrawPlus": {
+        "title": "",
+        "button": "",
+        "description": ""
+      }
+    },
+    "modal": {
+      "loadFromFile": {
+        "title": "",
+        "button": "",
+        "description": ""
+      },
+      "shareableLink": {
+        "title": "",
+        "button": "",
+        "description": ""
+      }
+    }
   }
 }

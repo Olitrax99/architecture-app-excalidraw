@@ -40,10 +40,6 @@
     "arrowhead_triangle": "त्रिकोण",
     "fontSize": "फ़ॉन्ट का आकार",
     "fontFamily": "फ़ॉन्ट का परिवार",
-    "onlySelected": "केवल चयनित",
-    "withBackground": "पृष्ठभूमि",
-    "exportEmbedScene": "",
-    "exportEmbedScene_details": "निर्यात एम्बेड दृश्य विवरण",
     "addWatermark": "ऐड \"मेड विथ एक्सकैलिडराव\"",
     "handDrawn": "हाथ से बनाया हुआ",
     "normal": "साधारण",
@@ -100,7 +96,6 @@
     "flipHorizontal": "दायें बायें पलटे",
     "flipVertical": "ऊपर नीचे पलटे",
     "viewMode": "अलग अलग देखें",
-    "toggleExportColorScheme": "",
     "share": "शेयर करें",
     "showStroke": "",
     "showBackground": "पृष्ठभूमि रंग वरक़ दिखाये",
@@ -114,8 +109,12 @@
     "createContainerFromText": "मूलपाठ कंटेनर में मोड के दिखाए",
     "link": {
       "edit": "",
+      "editEmbed": "",
       "create": "",
-      "label": ""
+      "createEmbed": "",
+      "label": "",
+      "labelEmbed": "",
+      "empty": ""
     },
     "lineEditor": {
       "edit": "रेखा संपादित करे",
@@ -128,7 +127,10 @@
       "unlockAll": "सब ताले के बाहर निकाले"
     },
     "statusPublished": "प्रकाशित",
-    "sidebarLock": "साइडबार खुला रखे."
+    "sidebarLock": "साइडबार खुला रखे.",
+    "selectAllElementsInFrame": "",
+    "removeAllElementsFromFrame": "",
+    "eyeDropper": "चित्रफलक से रंग चुने"
   },
   "library": {
     "noItems": "अभी तक कोई आइटम जोडा नहीं गया.",
@@ -140,11 +142,7 @@
     "exportJSON": "",
     "exportImage": "प्रतिमा निर्यात करे...",
     "export": "यंहा सुरक्षित करे...",
-    "exportToPng": "पीएनजी के रूप में निर्यात करे",
-    "exportToSvg": "Svg के रूप में निर्यात करे",
     "copyToClipboard": "क्लिपबोर्ड पर प्रतिलिपि बनाएँ",
-    "copyPngToClipboard": "क्लिपबोर्ड पर कॉपी करें,पीएनजी के रूप में",
-    "scale": "पैमाना",
     "save": "",
     "saveAs": "सेव करे इस तरह",
     "load": "खोलें",
@@ -166,13 +164,16 @@
     "darkMode": "डार्क मोड",
     "lightMode": "लाइट मोड",
     "zenMode": "ज़ेन मोड",
+    "objectsSnapMode": "वस्तुओं से पकड़े",
     "exitZenMode": "जेन मोड से बाहर निकलें",
     "cancel": "",
     "clear": "साफ़ करे",
     "remove": "हटाएं",
+    "embed": "",
     "publishLibrary": "प्रकाशित करें",
     "submit": "प्रस्तुत करे",
-    "confirm": "पुष्टि करें"
+    "confirm": "पुष्टि करें",
+    "embeddableInteractionButton": ""
   },
   "alerts": {
     "clearReset": "इससे पूरा कैनवास साफ हो जाएगा। क्या आपको यकीन है?",
@@ -202,16 +203,21 @@
     "imageInsertError": "छवि सम्मिलित नहीं की जा सकी. पुनः प्रयत्न करे...",
     "fileTooBig": "फ़ाइल ज़रूरत से ज़्यादा बड़ी हैं. अधिकतम अनुमित परिमाण {{maxSize}} हैं",
     "svgImageInsertError": "एसवीजी छवि सम्मिलित नहीं कर सके, एसवीजी रचना अनुचित हैं",
+    "failedToFetchImage": "",
     "invalidSVGString": "अनुचित SVG",
     "cannotResolveCollabServer": "कॉलेब सर्वर से कनेक्शन नहीं हो पा रहा. कृपया पृष्ठ को पुनः लाने का प्रयास करे.",
     "importLibraryError": "संग्रह प्रतिष्ठापित नहीं किया जा सका",
     "collabSaveFailed": "किसी कारण वश अंदरूनी डेटाबेस में सहेजा नहीं जा सका। यदि समस्या बनी रहती है, तो किये काम को खोने न देने के लिये अपनी फ़ाइल को स्थानीय रूप से सहेजे।",
     "collabSaveFailed_sizeExceeded": "लगता है कि पृष्ठ तल काफ़ी बड़ा है, इस्कारण अंदरूनी डेटाबेस में सहेजा नहीं जा सका। किये काम को खोने न देने के लिये अपनी फ़ाइल को स्थानीय रूप से सहेजे।",
     "brave_measure_text_error": {
-      "line1": "",
-      "line2": "",
-      "line3": "",
-      "line4": ""
+      "line1": "लगता है कि आप Brave ब्राउज़र का उपयोग कर रहे और साथ में <bold>आक्रामक उँगलियो के छाप </bold> का चयन किया हुवा है",
+      "line2": "यह आपके चित्रों के <bold>पाठ तत्वों</bold>को खंडित कर सकता हैं",
+      "line3": "हमें आपसे ठोस आग्रह है की आप सेट्टिंग में इस विकल्प का चयन ना करे.<link> इस अनुक्रम </link> का पालन करके इसका पता लगा सकते हैं",
+      "line4": "यदि इस सेटिंग्स को अक्षम करने पर भी पृष्ठ ठीक नहीं दिखता हो तो, हमारे GitHub पर एक <issueLink>मुद्दा प्रस्तुत</issueLink> करे, या हमें <discordLink>डिस्कोर्ड</discordLink> पर लिखित सम्पर्क करें"
+    },
+    "libraryElementTypeError": {
+      "embeddable": "",
+      "image": ""
     }
   },
   "toolBar": {
@@ -229,7 +235,11 @@
     "penMode": "पेन का मोड - स्पर्श टाले",
     "link": "",
     "eraser": "रबड़",
-    "hand": "हाथ ( खिसकाने का औज़ार)"
+    "frame": "",
+    "embeddable": "",
+    "laser": "लेसर टॉर्च",
+    "hand": "हाथ ( खिसकाने का औज़ार)",
+    "extraTools": ""
   },
   "headings": {
     "canvasActions": "कैनवास क्रिया",
@@ -241,6 +251,7 @@
     "linearElement": "कई बिंदुओं को शुरू करने के लिए क्लिक करें, सिंगल लाइन के लिए खींचें",
     "freeDraw": "क्लिक करें और खींचें। समाप्त करने के लिए, छोड़ो",
     "text": "आप चयन टूल से कहीं भी डबल-क्लिक करके टेक्स्ट जोड़ सकते हैं",
+    "embeddable": "",
     "text_selected": "",
     "text_editing": "",
     "linearElementMulti": "अंतिम बिंदु पर क्लिक करें या समाप्त होने के लिए एस्केप या एंटर दबाएं",
@@ -256,7 +267,8 @@
     "bindTextToElement": "",
     "deepBoxSelect": "",
     "eraserRevert": "मिटाने के लिए चुने हुए चीजों को ना चुनने के लिए Alt साथ में दबाए",
-    "firefox_clipboard_write": "\"dom.events.asyncClipboard.clipboardItem\" फ़्लैग को \"true\" पर सेट करके इस सुविधा को संभवतः सक्षम किया जा सकता है। Firefox में ब्राउज़र फ़्लैग बदलने के लिए, \"about:config\" पृष्ठ पर जाएँ।"
+    "firefox_clipboard_write": "\"dom.events.asyncClipboard.clipboardItem\" फ़्लैग को \"true\" पर सेट करके इस सुविधा को संभवतः सक्षम किया जा सकता है। Firefox में ब्राउज़र फ़्लैग बदलने के लिए, \"about:config\" पृष्ठ पर जाएँ।",
+    "disableSnapping": "स्नैपिंग को निष्क्रिय करने के लिए CtrlOrCmd दबाए रखें"
   },
   "canvasError": {
     "cannotShowPreview": "पूर्वावलोकन नहीं दिखा सकते हैं",
@@ -363,6 +375,30 @@
     "resetLibrary": "",
     "removeItemsFromLib": ""
   },
+  "imageExportDialog": {
+    "header": "",
+    "label": {
+      "withBackground": "",
+      "onlySelected": "",
+      "darkMode": "",
+      "embedScene": "",
+      "scale": "",
+      "padding": ""
+    },
+    "tooltip": {
+      "embedScene": ""
+    },
+    "title": {
+      "exportToPng": "",
+      "exportToSvg": "",
+      "copyPngToClipboard": ""
+    },
+    "button": {
+      "exportToPng": "",
+      "exportToSvg": "",
+      "copyPngToClipboard": ""
+    }
+  },
   "encrypted": {
     "tooltip": "आपके चित्र अंत-से-अंत एन्क्रिप्टेड हैं, इसलिए एक्सक्लूसिव्रॉव के सर्वर उन्हें कभी नहीं देखेंगे।",
     "link": ""
@@ -391,24 +427,26 @@
     "fileSavedToFilename": "",
     "canvas": "",
     "selection": "",
-    "pasteAsSingleElement": "एक अवयव के रूप में चिपकाने के लिए {{shortcut}} का उपयोग करें,\nया किसी मौजूदा पाठ संपादक में चिपकायें"
+    "pasteAsSingleElement": "एक अवयव के रूप में चिपकाने के लिए {{shortcut}} का उपयोग करें,\nया किसी मौजूदा पाठ संपादक में चिपकायें",
+    "unableToEmbed": "",
+    "unrecognizedLinkFormat": ""
   },
   "colors": {
     "transparent": "",
-    "black": "",
-    "white": "",
-    "red": "",
-    "pink": "",
-    "grape": "",
-    "violet": "",
-    "gray": "",
-    "blue": "",
-    "cyan": "",
-    "teal": "",
-    "green": "",
-    "yellow": "",
-    "orange": "",
-    "bronze": ""
+    "black": "काला",
+    "white": "सफ़ेद",
+    "red": "लाल",
+    "pink": "गुलाबी",
+    "grape": "अंगूरी",
+    "violet": "जामुनी",
+    "gray": "गहरा",
+    "blue": "नीला",
+    "cyan": "आसमानी",
+    "teal": "हरा-नीला",
+    "green": "हरा",
+    "yellow": "पीला",
+    "orange": "नारंगी",
+    "bronze": "कांस्य"
   },
   "welcomeScreen": {
     "app": {
@@ -424,10 +462,41 @@
     }
   },
   "colorPicker": {
-    "mostUsedCustomColors": "",
-    "colors": "",
-    "shades": "",
-    "hexCode": "",
-    "noShades": ""
+    "mostUsedCustomColors": "अधिकांश उपयोगित रंग",
+    "colors": "रंग",
+    "shades": "छाया",
+    "hexCode": "हेक्स कोड",
+    "noShades": "इस रंग की कोई छाया उपलब्ध नहीं हैं"
+  },
+  "overwriteConfirm": {
+    "action": {
+      "exportToImage": {
+        "title": "छवि स्वरूप में निर्यात करे",
+        "button": "छवि स्वरूप निर्यात करे",
+        "description": "दृष्य डेटा छवि स्वरूप में निर्यात करे, उस स्वरूप से आप उसे पुनः आयात कर सकते हो"
+      },
+      "saveToDisk": {
+        "title": "डिस्क में सम्हाले",
+        "button": "डिस्क में सम्हाले",
+        "description": "दृष्य डेटा बाहरी फ़ाइल में निर्यात करे, जहाँसे आप उसे पुनः आयात कर सकते हो"
+      },
+      "excalidrawPlus": {
+        "title": "एक्षकालीड्रॉ+",
+        "button": "एक्षकालीड्रॉ+ में निर्यात करे",
+        "description": "दृष्य को आपके एक्षकालीड्रॉ+ के कर्यस्थल में सम्हाले"
+      }
+    },
+    "modal": {
+      "loadFromFile": {
+        "title": "फ़ाइल से लोड करें:",
+        "button": "फ़ाइल से लोड करें:",
+        "description": "फ़ाइल से लोड करने पर <bold>यह आपके कार्य की जगह लेलेगा </bold><br></br>आपकी ड्रॉइंग निम्न दर्शित विकल्पो में से एक चुनके और उपयोग करके सम्हाल सकते हैं"
+      },
+      "shareableLink": {
+        "title": "लिंक से लोड करें:",
+        "button": "इस जगह प्रतिस्थापित करे",
+        "description": "बाहर का चित्र लोड करने पर <bold>यह आपके कार्य की जगह लेलेगा </bold><br></br>आप आपकी ड्रॉइंग पहले निम्न दर्शित विकल्पो में से एक चुनके और उपयोग करके सम्हाल सकते हों."
+      }
+    }
   }
 }

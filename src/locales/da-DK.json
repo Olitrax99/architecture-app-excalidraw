@@ -1,7 +1,7 @@
 {
   "labels": {
     "paste": "Indsæt",
-    "pasteAsPlaintext": "",
+    "pasteAsPlaintext": "Indsæt som klartekst",
     "pasteCharts": "Indsæt diagrammer",
     "selectAll": "Marker alle",
     "multiSelect": "Tilføj element til markering",
@@ -40,10 +40,6 @@
     "arrowhead_triangle": "Trekant",
     "fontSize": "Skriftstørrelse",
     "fontFamily": "Skrifttypefamilie",
-    "onlySelected": "Kun valgte",
-    "withBackground": "Baggrund",
-    "exportEmbedScene": "Indlejr scene",
-    "exportEmbedScene_details": "Scene data vil blive gemt i den eksporterede PNG/SVG-fil, så scenen kan gendannes fra den.\nDette vil øge den eksporterede filstørrelse.",
     "addWatermark": "Tilføj \"Lavet med Excalidraw\"",
     "handDrawn": "Hånd-tegnet",
     "normal": "Normal",
@@ -54,7 +50,7 @@
     "veryLarge": "Meget stor",
     "solid": "Solid",
     "hachure": "Skravering",
-    "zigzag": "",
+    "zigzag": "Zigzag",
     "crossHatch": "Krydsskravering",
     "thin": "Tynd",
     "bold": "Fed",
@@ -73,8 +69,8 @@
     "layers": "Lag",
     "actions": "Handlinger",
     "language": "Sprog",
-    "liveCollaboration": "",
-    "duplicateSelection": "",
+    "liveCollaboration": "Live samarbejde...",
+    "duplicateSelection": "Duplikér",
     "untitled": "Unavngivet",
     "name": "Navn",
     "yourName": "Dit navn",
@@ -100,7 +96,6 @@
     "flipHorizontal": "",
     "flipVertical": "",
     "viewMode": "",
-    "toggleExportColorScheme": "",
     "share": "Del",
     "showStroke": "",
     "showBackground": "",
@@ -114,8 +109,12 @@
     "createContainerFromText": "",
     "link": {
       "edit": "",
+      "editEmbed": "",
       "create": "",
-      "label": ""
+      "createEmbed": "",
+      "label": "",
+      "labelEmbed": "",
+      "empty": ""
     },
     "lineEditor": {
       "edit": "",
@@ -128,7 +127,10 @@
       "unlockAll": ""
     },
     "statusPublished": "",
-    "sidebarLock": ""
+    "sidebarLock": "",
+    "selectAllElementsInFrame": "",
+    "removeAllElementsFromFrame": "",
+    "eyeDropper": ""
   },
   "library": {
     "noItems": "",
@@ -140,11 +142,7 @@
     "exportJSON": "",
     "exportImage": "",
     "export": "",
-    "exportToPng": "",
-    "exportToSvg": "",
     "copyToClipboard": "Kopier til klippebord",
-    "copyPngToClipboard": "Kopier PNG til klippebord",
-    "scale": "",
     "save": "",
     "saveAs": "Gem som",
     "load": "",
@@ -166,13 +164,16 @@
     "darkMode": "Mørk tilstand",
     "lightMode": "Lys baggrund",
     "zenMode": "Zentilstand",
+    "objectsSnapMode": "",
     "exitZenMode": "Stop zentilstand",
     "cancel": "Annuller",
     "clear": "Ryd",
     "remove": "Fjern",
+    "embed": "",
     "publishLibrary": "Publicér",
     "submit": "Gem",
-    "confirm": "Bekræft"
+    "confirm": "Bekræft",
+    "embeddableInteractionButton": ""
   },
   "alerts": {
     "clearReset": "Dette vil rydde hele lærredet. Er du sikker?",
@@ -202,6 +203,7 @@
     "imageInsertError": "",
     "fileTooBig": "",
     "svgImageInsertError": "",
+    "failedToFetchImage": "",
     "invalidSVGString": "",
     "cannotResolveCollabServer": "",
     "importLibraryError": "",
@@ -212,6 +214,10 @@
       "line2": "",
       "line3": "",
       "line4": ""
+    },
+    "libraryElementTypeError": {
+      "embeddable": "",
+      "image": ""
     }
   },
   "toolBar": {
@@ -229,7 +235,11 @@
     "penMode": "",
     "link": "",
     "eraser": "",
-    "hand": ""
+    "frame": "",
+    "embeddable": "",
+    "laser": "",
+    "hand": "",
+    "extraTools": ""
   },
   "headings": {
     "canvasActions": "",
@@ -241,6 +251,7 @@
     "linearElement": "",
     "freeDraw": "Klik og træk, slip når du er færdig",
     "text": "",
+    "embeddable": "",
     "text_selected": "",
     "text_editing": "",
     "linearElementMulti": "",
@@ -256,7 +267,8 @@
     "bindTextToElement": "",
     "deepBoxSelect": "",
     "eraserRevert": "",
-    "firefox_clipboard_write": ""
+    "firefox_clipboard_write": "",
+    "disableSnapping": ""
   },
   "canvasError": {
     "cannotShowPreview": "",
@@ -363,6 +375,30 @@
     "resetLibrary": "",
     "removeItemsFromLib": ""
   },
+  "imageExportDialog": {
+    "header": "",
+    "label": {
+      "withBackground": "",
+      "onlySelected": "",
+      "darkMode": "",
+      "embedScene": "",
+      "scale": "",
+      "padding": ""
+    },
+    "tooltip": {
+      "embedScene": ""
+    },
+    "title": {
+      "exportToPng": "",
+      "exportToSvg": "",
+      "copyPngToClipboard": ""
+    },
+    "button": {
+      "exportToPng": "",
+      "exportToSvg": "",
+      "copyPngToClipboard": ""
+    }
+  },
   "encrypted": {
     "tooltip": "",
     "link": ""
@@ -391,7 +427,9 @@
     "fileSavedToFilename": "Gemt som {filename}",
     "canvas": "canvas",
     "selection": "markering",
-    "pasteAsSingleElement": ""
+    "pasteAsSingleElement": "",
+    "unableToEmbed": "",
+    "unrecognizedLinkFormat": ""
   },
   "colors": {
     "transparent": "",
@@ -429,5 +467,36 @@
     "shades": "",
     "hexCode": "",
     "noShades": ""
+  },
+  "overwriteConfirm": {
+    "action": {
+      "exportToImage": {
+        "title": "",
+        "button": "",
+        "description": ""
+      },
+      "saveToDisk": {
+        "title": "",
+        "button": "",
+        "description": ""
+      },
+      "excalidrawPlus": {
+        "title": "",
+        "button": "",
+        "description": ""
+      }
+    },
+    "modal": {
+      "loadFromFile": {
+        "title": "",
+        "button": "",
+        "description": ""
+      },
+      "shareableLink": {
+        "title": "",
+        "button": "",
+        "description": ""
+      }
+    }
   }
 }

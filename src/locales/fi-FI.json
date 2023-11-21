@@ -40,10 +40,6 @@
     "arrowhead_triangle": "Kolmio",
     "fontSize": "Kirjasinkoko",
     "fontFamily": "Kirjasintyyppi",
-    "onlySelected": "Vain valitut",
-    "withBackground": "Taustalla",
-    "exportEmbedScene": "Upota työ",
-    "exportEmbedScene_details": "Teoksen tiedot tallennetaan PNG/SVG-tiedostoon, jolloin teoksen voi palauttaa siitä. Kasvattaa tallennetun tiedoston kokoa.",
     "addWatermark": "Lisää \"Tehty Excalidrawilla\"",
     "handDrawn": "Käsinpiirretty",
     "normal": "Tavallinen",
@@ -100,7 +96,6 @@
     "flipHorizontal": "Käännä vaakasuunnassa",
     "flipVertical": "Käännä pystysuunnassa",
     "viewMode": "Katselutila",
-    "toggleExportColorScheme": "Vaihda viennin väriteema",
     "share": "Jaa",
     "showStroke": "Näytä viivan värin valitsin",
     "showBackground": "Näytä taustavärin valitsin",
@@ -114,8 +109,12 @@
     "createContainerFromText": "",
     "link": {
       "edit": "Muokkaa linkkiä",
+      "editEmbed": "",
       "create": "Luo linkki",
-      "label": "Linkki"
+      "createEmbed": "",
+      "label": "Linkki",
+      "labelEmbed": "",
+      "empty": ""
     },
     "lineEditor": {
       "edit": "Muokkaa riviä",
@@ -128,7 +127,10 @@
       "unlockAll": "Poista lukitus kaikista"
     },
     "statusPublished": "Julkaistu",
-    "sidebarLock": "Pidä sivupalkki avoinna"
+    "sidebarLock": "Pidä sivupalkki avoinna",
+    "selectAllElementsInFrame": "",
+    "removeAllElementsFromFrame": "",
+    "eyeDropper": ""
   },
   "library": {
     "noItems": "Kirjastossa ei ole vielä yhtään kohdetta...",
@@ -140,11 +142,7 @@
     "exportJSON": "Vie tiedostoon",
     "exportImage": "Vie kuva...",
     "export": "Tallenna nimellä...",
-    "exportToPng": "Vie PNG-tiedostona",
-    "exportToSvg": "Vie SVG-tiedostona",
     "copyToClipboard": "Kopioi leikepöydälle",
-    "copyPngToClipboard": "Kopioi PNG-tiedosto leikepöydälle",
-    "scale": "Koko",
     "save": "Tallenna nykyiseen tiedostoon",
     "saveAs": "Tallenna nimellä",
     "load": "Avaa",
@@ -166,13 +164,16 @@
     "darkMode": "Tumma tila",
     "lightMode": "Vaalea tila",
     "zenMode": "Zen-tila",
+    "objectsSnapMode": "",
     "exitZenMode": "Poistu zen-tilasta",
     "cancel": "Peruuta",
     "clear": "Pyyhi",
     "remove": "Poista",
+    "embed": "",
     "publishLibrary": "Julkaise",
     "submit": "Lähetä",
-    "confirm": "Vahvista"
+    "confirm": "Vahvista",
+    "embeddableInteractionButton": ""
   },
   "alerts": {
     "clearReset": "Tämä tyhjentää koko piirtoalueen. Jatketaanko?",
@@ -202,6 +203,7 @@
     "imageInsertError": "Kuvan lisääminen epäonnistui. Yritä myöhemmin uudelleen...",
     "fileTooBig": "Tiedosto on liian suuri. Suurin sallittu koko on {{maxSize}}.",
     "svgImageInsertError": "SVG- kuvaa ei voitu lisätä. Tiedoston SVG-sisältö näyttää virheelliseltä.",
+    "failedToFetchImage": "",
     "invalidSVGString": "Virheellinen SVG.",
     "cannotResolveCollabServer": "Yhteyden muodostaminen collab-palvelimeen epäonnistui. Virkistä sivu ja yritä uudelleen.",
     "importLibraryError": "Kokoelman lataaminen epäonnistui",
@@ -212,6 +214,10 @@
       "line2": "",
       "line3": "",
       "line4": ""
+    },
+    "libraryElementTypeError": {
+      "embeddable": "",
+      "image": ""
     }
   },
   "toolBar": {
@@ -229,7 +235,11 @@
     "penMode": "Kynätila - estä kosketus",
     "link": "Lisää/päivitä linkki valitulle muodolle",
     "eraser": "Poistotyökalu",
-    "hand": "Käsi (panning-työkalu)"
+    "frame": "",
+    "embeddable": "",
+    "laser": "",
+    "hand": "Käsi (panning-työkalu)",
+    "extraTools": ""
   },
   "headings": {
     "canvasActions": "Piirtoalueen toiminnot",
@@ -241,6 +251,7 @@
     "linearElement": "Klikkaa piirtääksesi useampi piste, raahaa piirtääksesi yksittäinen viiva",
     "freeDraw": "Paina ja raahaa, päästä irti kun olet valmis",
     "text": "Vinkki: voit myös lisätä tekstiä kaksoisnapsauttamalla mihin tahansa valintatyökalulla",
+    "embeddable": "",
     "text_selected": "Kaksoisnapsauta tai paina ENTER muokataksesi tekstiä",
     "text_editing": "Paina Escape tai CtrlOrCmd+ENTER lopettaaksesi muokkaamisen",
     "linearElementMulti": "Lopeta klikkaamalla viimeistä pistettä, painamalla Escape- tai Enter-näppäintä",
@@ -256,7 +267,8 @@
     "bindTextToElement": "Lisää tekstiä painamalla enter",
     "deepBoxSelect": "Käytä syvävalintaa ja estä raahaus painamalla CtrlOrCmd",
     "eraserRevert": "Pidä Alt alaspainettuna, kumotaksesi merkittyjen elementtien poistamisen",
-    "firefox_clipboard_write": "Tämä ominaisuus voidaan todennäköisesti ottaa käyttöön asettamalla \"dom.events.asyncClipboard.clipboardItem\" kohta \"true\":ksi. Vaihtaaksesi selaimen kohdan Firefoxissa, käy \"about:config\" sivulla."
+    "firefox_clipboard_write": "Tämä ominaisuus voidaan todennäköisesti ottaa käyttöön asettamalla \"dom.events.asyncClipboard.clipboardItem\" kohta \"true\":ksi. Vaihtaaksesi selaimen kohdan Firefoxissa, käy \"about:config\" sivulla.",
+    "disableSnapping": ""
   },
   "canvasError": {
     "cannotShowPreview": "Esikatselua ei voitu näyttää",
@@ -363,6 +375,30 @@
     "resetLibrary": "Tyhjennä kirjasto",
     "removeItemsFromLib": "Poista valitut kohteet kirjastosta"
   },
+  "imageExportDialog": {
+    "header": "",
+    "label": {
+      "withBackground": "",
+      "onlySelected": "",
+      "darkMode": "",
+      "embedScene": "",
+      "scale": "",
+      "padding": ""
+    },
+    "tooltip": {
+      "embedScene": ""
+    },
+    "title": {
+      "exportToPng": "",
+      "exportToSvg": "",
+      "copyPngToClipboard": ""
+    },
+    "button": {
+      "exportToPng": "",
+      "exportToSvg": "",
+      "copyPngToClipboard": ""
+    }
+  },
   "encrypted": {
     "tooltip": "Piirroksesi ovat päästä-päähän-salattuja, joten Excalidrawin palvelimet eivät koskaan näe niitä.",
     "link": "Blogiartikkeli päästä päähän -salauksesta Excalidraw:ssa"
@@ -391,7 +427,9 @@
     "fileSavedToFilename": "Tallennettiin kohteeseen {filename}",
     "canvas": "piirtoalue",
     "selection": "valinta",
-    "pasteAsSingleElement": "Käytä {{shortcut}} liittääksesi yhtenä elementtinä,\ntai liittääksesi olemassa olevaan tekstieditoriin"
+    "pasteAsSingleElement": "Käytä {{shortcut}} liittääksesi yhtenä elementtinä,\ntai liittääksesi olemassa olevaan tekstieditoriin",
+    "unableToEmbed": "",
+    "unrecognizedLinkFormat": ""
   },
   "colors": {
     "transparent": "Läpinäkyvä",
@@ -429,5 +467,36 @@
     "shades": "",
     "hexCode": "",
     "noShades": ""
+  },
+  "overwriteConfirm": {
+    "action": {
+      "exportToImage": {
+        "title": "",
+        "button": "",
+        "description": ""
+      },
+      "saveToDisk": {
+        "title": "",
+        "button": "",
+        "description": ""
+      },
+      "excalidrawPlus": {
+        "title": "",
+        "button": "",
+        "description": ""
+      }
+    },
+    "modal": {
+      "loadFromFile": {
+        "title": "",
+        "button": "",
+        "description": ""
+      },
+      "shareableLink": {
+        "title": "",
+        "button": "",
+        "description": ""
+      }
+    }
   }
 }

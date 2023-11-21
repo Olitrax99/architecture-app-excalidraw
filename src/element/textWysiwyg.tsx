@@ -11,7 +11,7 @@ import {
   isBoundToContainer,
   isTextElement,
 } from "./typeChecks";
-import { CLASSES, isSafari, VERTICAL_ALIGN } from "../constants";
+import { CLASSES, isSafari } from "../constants";
 import {
   ExcalidrawElement,
   ExcalidrawLinearElement,
@@ -20,15 +20,12 @@ import {
   ExcalidrawTextContainer,
 } from "./types";
 import { AppState } from "../types";
-import { mutateElement } from "./mutateElement";
+import { bumpVersion, mutateElement } from "./mutateElement";
 import {
   getBoundTextElementId,
-  getContainerCoords,
-  getContainerDims,
   getContainerElement,
   getTextElementAngle,
   getTextWidth,
-  measureText,
   normalizeText,
   redrawTextBoundingBox,
   wrapText,
@@ -36,6 +33,7 @@ import {
   getBoundTextMaxWidth,
   computeContainerDimensionForBoundText,
   detectLineHeight,
+  computeBoundTextPosition,
 } from "./textElement";
 import {
   actionDecreaseFontSize,
@@ -118,7 +116,7 @@ export const textWysiwyg = ({
   }) => void;
   getViewportCoords: (x: number, y: number) => [number, number];
   element: ExcalidrawTextElement;
-  canvas: HTMLCanvasElement | null;
+  canvas: HTMLCanvasElement;
   excalidrawContainer: HTMLDivElement | null;
   app: App;
 }) => {
@@ -162,7 +160,7 @@ export const textWysiwyg = ({
       let textElementWidth = updatedTextElement.width;
       // Set to element height by default since that's
       // what is going to be used for unbounded text
-      let textElementHeight = updatedTextElement.height;
+      const textElementHeight = updatedTextElement.height;
 
       if (container && updatedTextElement.containerId) {
         if (isArrowElement(container)) {
@@ -178,29 +176,19 @@ export const textWysiwyg = ({
           updatedTextElement,
           editable,
         );
-        const containerDims = getContainerDims(container);
-        // using editor.style.height to get the accurate height of text editor
-        const editorHeight = Number(editable.style.height.slice(0, -2));
-        if (editorHeight > 0) {
-          textElementHeight = editorHeight;
-        }
-        if (propertiesUpdated) {
-          // update height of the editor after properties updated
-          textElementHeight = updatedTextElement.height;
-        }
 
         let originalContainerData;
         if (propertiesUpdated) {
           originalContainerData = updateOriginalContainerCache(
             container.id,
-            containerDims.height,
+            container.height,
           );
         } else {
           originalContainerData = originalContainerCache[container.id];
           if (!originalContainerData) {
             originalContainerData = updateOriginalContainerCache(
               container.id,
-              containerDims.height,
+              container.height,
             );
           }
         }
@@ -224,7 +212,7 @@ export const textWysiwyg = ({
           // autoshrink container height until original container height
           // is reached when text is removed
           !isArrowElement(container) &&
-          containerDims.height > originalContainerData.height &&
+          container.height > originalContainerData.height &&
           textElementHeight < maxHeight
         ) {
           const targetContainerHeight = computeContainerDimensionForBoundText(
@@ -232,22 +220,12 @@ export const textWysiwyg = ({
             container.type,
           );
           mutateElement(container, { height: targetContainerHeight });
-        }
-        // Start pushing text upward until a diff of 30px (padding)
-        // is reached
-        else {
-          const containerCoords = getContainerCoords(container);
-
-          // vertically center align the text
-          if (verticalAlign === VERTICAL_ALIGN.MIDDLE) {
-            if (!isArrowElement(container)) {
-              coordY =
-                containerCoords.y + maxHeight / 2 - textElementHeight / 2;
-            }
-          }
-          if (verticalAlign === VERTICAL_ALIGN.BOTTOM) {
-            coordY = containerCoords.y + (maxHeight - textElementHeight);
-          }
+        } else {
+          const { y } = computeBoundTextPosition(
+            container,
+            updatedTextElement as ExcalidrawTextElementWithContainer,
+          );
+          coordY = y;
         }
       }
       const [viewportX, viewportY] = getViewportCoords(coordX, coordY);
@@ -388,25 +366,6 @@ export const textWysiwyg = ({
     };
 
     editable.oninput = () => {
-      const updatedTextElement = Scene.getScene(element)?.getElement(
-        id,
-      ) as ExcalidrawTextElement;
-      const font = getFontString(updatedTextElement);
-      if (isBoundToContainer(element)) {
-        const container = getContainerElement(element);
-        const wrappedText = wrapText(
-          normalizeText(editable.value),
-          font,
-          getBoundTextMaxWidth(container!),
-        );
-        const { width, height } = measureText(
-          wrappedText,
-          font,
-          updatedTextElement.lineHeight,
-        );
-        editable.style.width = `${width}px`;
-        editable.style.height = `${height}px`;
-      }
       onChange(normalizeText(editable.value));
     };
   }
@@ -582,6 +541,9 @@ export const textWysiwyg = ({
               id: element.id,
             }),
           });
+        } else if (isArrowElement(container)) {
+          // updating an arrow label may change bounds, prevent stale cache:
+          bumpVersion(container);
         }
       } else {
         mutateElement(container, {
@@ -622,7 +584,7 @@ export const textWysiwyg = ({
     window.removeEventListener("pointerdown", onPointerDown);
     window.removeEventListener("pointerup", bindBlurEvent);
     window.removeEventListener("blur", handleSubmit);
-
+    window.removeEventListener("beforeunload", handleSubmit);
     unbindUpdate();
 
     editable.remove();
@@ -739,6 +701,7 @@ export const textWysiwyg = ({
     passive: false,
     capture: true,
   });
+  window.addEventListener("beforeunload", handleSubmit);
   excalidrawContainer
     ?.querySelector(".excalidraw-textEditorContainer")!
     .appendChild(editable);

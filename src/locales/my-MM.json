@@ -40,10 +40,6 @@
     "arrowhead_triangle": "",
     "fontSize": "စာလုံးအရွယ်",
     "fontFamily": "စာလုံးပုံစံ",
-    "onlySelected": "ရွေးထားသလောက်",
-    "withBackground": "",
-    "exportEmbedScene": "",
-    "exportEmbedScene_details": "ထုတ်ယူလိုက်သော PNG/SVG ထဲမြင်ကွင်းအချက်အလက်များပါဝင်သဖြင့် ပြန်လည်ရယူနိုင်သော်လည်း ဖိုင်အရွယ်အစားကြီးပါမည်။",
     "addWatermark": "\"Excalidraw ဖြင့်ဖန်တီးသည်။\" စာသားထည့်",
     "handDrawn": "လက်ရေး",
     "normal": "ပုံမှန်",
@@ -100,7 +96,6 @@
     "flipHorizontal": "",
     "flipVertical": "",
     "viewMode": "",
-    "toggleExportColorScheme": "",
     "share": "",
     "showStroke": "",
     "showBackground": "",
@@ -114,8 +109,12 @@
     "createContainerFromText": "",
     "link": {
       "edit": "",
+      "editEmbed": "",
       "create": "",
-      "label": ""
+      "createEmbed": "",
+      "label": "",
+      "labelEmbed": "",
+      "empty": ""
     },
     "lineEditor": {
       "edit": "",
@@ -128,7 +127,10 @@
       "unlockAll": ""
     },
     "statusPublished": "",
-    "sidebarLock": ""
+    "sidebarLock": "",
+    "selectAllElementsInFrame": "",
+    "removeAllElementsFromFrame": "",
+    "eyeDropper": ""
   },
   "library": {
     "noItems": "",
@@ -140,11 +142,7 @@
     "exportJSON": "",
     "exportImage": "",
     "export": "",
-    "exportToPng": "PNG ထုတ်",
-    "exportToSvg": "SVG ထုတ်",
     "copyToClipboard": "ကူးယူ",
-    "copyPngToClipboard": "PNG ကူးယူ",
-    "scale": "စကေး",
     "save": "",
     "saveAs": "ပြောင်းသိမ်း",
     "load": "",
@@ -166,13 +164,16 @@
     "darkMode": "",
     "lightMode": "",
     "zenMode": "",
+    "objectsSnapMode": "",
     "exitZenMode": "ဇင်မြင်ကွင်းမှထွက်",
     "cancel": "",
     "clear": "",
     "remove": "",
+    "embed": "",
     "publishLibrary": "",
     "submit": "",
-    "confirm": ""
+    "confirm": "",
+    "embeddableInteractionButton": ""
   },
   "alerts": {
     "clearReset": "ကားချပ်တစ်ခုလုံးရှင်းလင်းပါတော့မည်။ အတည်ပြုပါ။",
@@ -202,6 +203,7 @@
     "imageInsertError": "",
     "fileTooBig": "",
     "svgImageInsertError": "",
+    "failedToFetchImage": "",
     "invalidSVGString": "",
     "cannotResolveCollabServer": "",
     "importLibraryError": "",
@@ -212,6 +214,10 @@
       "line2": "",
       "line3": "",
       "line4": ""
+    },
+    "libraryElementTypeError": {
+      "embeddable": "",
+      "image": ""
     }
   },
   "toolBar": {
@@ -229,7 +235,11 @@
     "penMode": "",
     "link": "",
     "eraser": "",
-    "hand": ""
+    "frame": "",
+    "embeddable": "",
+    "laser": "",
+    "hand": "",
+    "extraTools": ""
   },
   "headings": {
     "canvasActions": "ကားချပ်လုပ်ဆောင်ချက်",
@@ -241,6 +251,7 @@
     "linearElement": "အမှတ်များချမှတ်ရေးဆွဲရန်ကလစ်နှိပ်ပါ၊ မျဉ်းတစ်ကြောင်းတည်းအတွက် တရွတ်ဆွဲပါ။",
     "freeDraw": "ကလစ်နှိပ်၍ တရွတ်ဆွဲပါ၊ ပြီးလျှင်လွှတ်ပါ။",
     "text": "မှတ်ချက်။ ။မည်သည့်ကိရိယာရွေးထားသည်ဖြစ်စေ ကလစ်နှစ်ချက်နှိပ်၍စာသားထည့်နိုင်သည်",
+    "embeddable": "",
     "text_selected": "",
     "text_editing": "",
     "linearElementMulti": "နောက်ဆုံးအမှတ်ပေါ်တွင်ကလစ်နှိပ်ခြင်း၊ Escape (သို့) Enter နှိပ်ခြင်းတို့ဖြင့်အဆုံးသတ်နိုင်",
@@ -256,7 +267,8 @@
     "bindTextToElement": "",
     "deepBoxSelect": "",
     "eraserRevert": "",
-    "firefox_clipboard_write": ""
+    "firefox_clipboard_write": "",
+    "disableSnapping": ""
   },
   "canvasError": {
     "cannotShowPreview": "နမူနာမပြသနိုင်ပါ",
@@ -363,6 +375,30 @@
     "resetLibrary": "",
     "removeItemsFromLib": ""
   },
+  "imageExportDialog": {
+    "header": "",
+    "label": {
+      "withBackground": "",
+      "onlySelected": "",
+      "darkMode": "",
+      "embedScene": "",
+      "scale": "",
+      "padding": ""
+    },
+    "tooltip": {
+      "embedScene": ""
+    },
+    "title": {
+      "exportToPng": "",
+      "exportToSvg": "",
+      "copyPngToClipboard": ""
+    },
+    "button": {
+      "exportToPng": "",
+      "exportToSvg": "",
+      "copyPngToClipboard": ""
+    }
+  },
   "encrypted": {
     "tooltip": "ရေးဆွဲထားသောပုံများအား နှစ်ဘက်စွန်းတိုင်လျှို့ဝှက်ထားသဖြင့် Excalidraw ၏ဆာဗာများပင်လျှင်မြင်တွေ့ရမည်မဟုတ်ပါ။",
     "link": ""
@@ -391,7 +427,9 @@
     "fileSavedToFilename": "",
     "canvas": "",
     "selection": "",
-    "pasteAsSingleElement": ""
+    "pasteAsSingleElement": "",
+    "unableToEmbed": "",
+    "unrecognizedLinkFormat": ""
   },
   "colors": {
     "transparent": "",
@@ -429,5 +467,36 @@
     "shades": "",
     "hexCode": "",
     "noShades": ""
+  },
+  "overwriteConfirm": {
+    "action": {
+      "exportToImage": {
+        "title": "",
+        "button": "",
+        "description": ""
+      },
+      "saveToDisk": {
+        "title": "",
+        "button": "",
+        "description": ""
+      },
+      "excalidrawPlus": {
+        "title": "",
+        "button": "",
+        "description": ""
+      }
+    },
+    "modal": {
+      "loadFromFile": {
+        "title": "",
+        "button": "",
+        "description": ""
+      },
+      "shareableLink": {
+        "title": "",
+        "button": "",
+        "description": ""
+      }
+    }
   }
 }

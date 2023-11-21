@@ -40,10 +40,6 @@
     "arrowhead_triangle": "Háromszög",
     "fontSize": "Betűméret",
     "fontFamily": "Betűkészlet család",
-    "onlySelected": "Csak a kijelölt",
-    "withBackground": "Háttér",
-    "exportEmbedScene": "Jelenet beágyazása",
-    "exportEmbedScene_details": "A jelenetet leíró adatok hozzá lesznek adva a PNG/SVG fájlhoz, így a jelenetet vissza lehet majd tölteni belőle. Ez megnöveli a fájl méretét.",
     "addWatermark": "Add hozzá, hogy \"Excalidraw-val készült\"",
     "handDrawn": "Kézzel rajzolt",
     "normal": "Normál",
@@ -100,7 +96,6 @@
     "flipHorizontal": "Vízszintes tükrözés",
     "flipVertical": "Függőleges tükrözés",
     "viewMode": "Nézet",
-    "toggleExportColorScheme": "Exportált színséma váltása",
     "share": "Megosztás",
     "showStroke": "Körvonal színválasztó megjelenítése",
     "showBackground": "Háttérszín-választó megjelenítése",
@@ -114,8 +109,12 @@
     "createContainerFromText": "",
     "link": {
       "edit": "Hivatkozás szerkesztése",
+      "editEmbed": "",
       "create": "Hivatkozás létrehozása",
-      "label": "Hivatkozás"
+      "createEmbed": "",
+      "label": "Hivatkozás",
+      "labelEmbed": "",
+      "empty": ""
     },
     "lineEditor": {
       "edit": "",
@@ -128,7 +127,10 @@
       "unlockAll": ""
     },
     "statusPublished": "",
-    "sidebarLock": ""
+    "sidebarLock": "",
+    "selectAllElementsInFrame": "",
+    "removeAllElementsFromFrame": "",
+    "eyeDropper": ""
   },
   "library": {
     "noItems": "",
@@ -140,11 +142,7 @@
     "exportJSON": "Exportálás fájlba",
     "exportImage": "",
     "export": "",
-    "exportToPng": "Exportálás PNG-be",
-    "exportToSvg": "Exportálás SVG-be",
     "copyToClipboard": "Vágólapra másolás",
-    "copyPngToClipboard": "PNG másolása a vágólapra",
-    "scale": "Nagyítás",
     "save": "Mentés az aktuális fájlba",
     "saveAs": "Mentés másként",
     "load": "",
@@ -166,13 +164,16 @@
     "darkMode": "Sötét mód",
     "lightMode": "Világos mód",
     "zenMode": "Letisztult mód",
+    "objectsSnapMode": "",
     "exitZenMode": "Kilépés a letisztult módból",
     "cancel": "Mégsem",
     "clear": "Kiűrítés",
     "remove": "Eltávolítás",
+    "embed": "",
     "publishLibrary": "Közzététel",
     "submit": "Elküldés",
-    "confirm": "Megerősítés"
+    "confirm": "Megerősítés",
+    "embeddableInteractionButton": ""
   },
   "alerts": {
     "clearReset": "Ez a művelet törli a vászont. Biztos benne?",
@@ -202,6 +203,7 @@
     "imageInsertError": "Nem sikerült beszúrni a képet. Próbáld újra később...",
     "fileTooBig": "A fájl túl nagy. A megengedett maximális méret {{maxSize}}.",
     "svgImageInsertError": "Nem sikerült beszúrni az SVG-képet. Az SVG szintaktika érvénytelennek tűnik.",
+    "failedToFetchImage": "",
     "invalidSVGString": "Érvénytelen SVG.",
     "cannotResolveCollabServer": "",
     "importLibraryError": "",
@@ -212,6 +214,10 @@
       "line2": "",
       "line3": "",
       "line4": ""
+    },
+    "libraryElementTypeError": {
+      "embeddable": "",
+      "image": ""
     }
   },
   "toolBar": {
@@ -229,7 +235,11 @@
     "penMode": "",
     "link": "Hivatkozás hozzáadása/frissítése a kiválasztott alakzathoz",
     "eraser": "",
-    "hand": ""
+    "frame": "",
+    "embeddable": "",
+    "laser": "",
+    "hand": "",
+    "extraTools": ""
   },
   "headings": {
     "canvasActions": "Vászon műveletek",
@@ -241,6 +251,7 @@
     "linearElement": "Kattintással görbe, az eger húzásával pedig egyenes nyilat rajzolhatsz",
     "freeDraw": "Kattints és húzd, majd engedd el, amikor végeztél",
     "text": "Tipp: A kijelölés eszközzel a dupla kattintás új szöveget hoz létre",
+    "embeddable": "",
     "text_selected": "Kattints duplán, vagy nyomj entert a szöveg szerkesztéséhez",
     "text_editing": "Nyomjd meg az Escape vagy a Ctrl/Cmd+ENTER billentyűkombinációt a szerkesztés befejezéséhez",
     "linearElementMulti": "Kattints a következő ív pozíciójára, vagy fejezd be a nyilat az Escape vagy Enter megnyomásával",
@@ -256,7 +267,8 @@
     "bindTextToElement": "Nyomd meg az Entert szöveg hozzáadáshoz",
     "deepBoxSelect": "Tartsd lenyomva a Ctrl/Cmd billentyűt a mély kijelöléshez és a húzás megakadályozásához",
     "eraserRevert": "",
-    "firefox_clipboard_write": ""
+    "firefox_clipboard_write": "",
+    "disableSnapping": ""
   },
   "canvasError": {
     "cannotShowPreview": "Előnézet nem jeleníthető meg",
@@ -363,6 +375,30 @@
     "resetLibrary": "Könyvtár alaphelyzetbe állítása",
     "removeItemsFromLib": "A kiválasztott elemek eltávolítása a könyvtárból"
   },
+  "imageExportDialog": {
+    "header": "Kép exportálása",
+    "label": {
+      "withBackground": "",
+      "onlySelected": "",
+      "darkMode": "",
+      "embedScene": "",
+      "scale": "",
+      "padding": ""
+    },
+    "tooltip": {
+      "embedScene": ""
+    },
+    "title": {
+      "exportToPng": "",
+      "exportToSvg": "",
+      "copyPngToClipboard": ""
+    },
+    "button": {
+      "exportToPng": "",
+      "exportToSvg": "",
+      "copyPngToClipboard": ""
+    }
+  },
   "encrypted": {
     "tooltip": "A rajzaidat végpontok közötti titkosítással tároljuk, tehát az Excalidraw szervereiről se tud más belenézni.",
     "link": "Blogbejegyzés a végpontok közötti titkosításról az Excalidraw-ban"
@@ -391,7 +427,9 @@
     "fileSavedToFilename": "Mentve mint {filename}",
     "canvas": "rajzvászon",
     "selection": "kijelölés",
-    "pasteAsSingleElement": ""
+    "pasteAsSingleElement": "",
+    "unableToEmbed": "",
+    "unrecognizedLinkFormat": ""
   },
   "colors": {
     "transparent": "Átlátszó",
@@ -429,5 +467,36 @@
     "shades": "",
     "hexCode": "",
     "noShades": ""
+  },
+  "overwriteConfirm": {
+    "action": {
+      "exportToImage": {
+        "title": "",
+        "button": "",
+        "description": ""
+      },
+      "saveToDisk": {
+        "title": "",
+        "button": "",
+        "description": ""
+      },
+      "excalidrawPlus": {
+        "title": "",
+        "button": "",
+        "description": ""
+      }
+    },
+    "modal": {
+      "loadFromFile": {
+        "title": "",
+        "button": "",
+        "description": ""
+      },
+      "shareableLink": {
+        "title": "",
+        "button": "",
+        "description": ""
+      }
+    }
   }
 }

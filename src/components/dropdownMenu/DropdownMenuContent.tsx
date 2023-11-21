@@ -1,11 +1,10 @@
-import { useOutsideClick } from "../../hooks/useOutsideClick";
 import { Island } from "../Island";
-
 import { useDevice } from "../App";
 import clsx from "clsx";
 import Stack from "../Stack";
-import React from "react";
+import React, { useRef } from "react";
 import { DropdownMenuContentPropsContext } from "./common";
+import { useOutsideClick } from "../../hooks/useOutsideClick";
 
 const MenuContent = ({
   children,
@@ -24,12 +23,14 @@ const MenuContent = ({
   style?: React.CSSProperties;
 }) => {
   const device = useDevice();
-  const menuRef = useOutsideClick(() => {
+  const menuRef = useRef<HTMLDivElement>(null);
+
+  useOutsideClick(menuRef, () => {
     onClickOutside?.();
   });
 
   const classNames = clsx(`dropdown-menu ${className}`, {
-    "dropdown-menu--mobile": device.isMobile,
+    "dropdown-menu--mobile": device.editor.isMobile,
   }).trim();
 
   return (
@@ -42,7 +43,7 @@ const MenuContent = ({
       >
         {/* the zIndex ensures this menu has higher stacking order,
     see https://github.com/excalidraw/excalidraw/pull/1445 */}
-        {device.isMobile ? (
+        {device.editor.isMobile ? (
           <Stack.Col className="dropdown-menu-container">{children}</Stack.Col>
         ) : (
           <Island

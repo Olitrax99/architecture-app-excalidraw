@@ -40,10 +40,6 @@
     "arrowhead_triangle": "Τρίγωνο",
     "fontSize": "Μέγεθος γραμματοσειράς",
     "fontFamily": "Γραμματοσειρά",
-    "onlySelected": "Μόνο τα Επιλεγμένα",
-    "withBackground": "Φόντο",
-    "exportEmbedScene": "Ενσωμάτωση σκηνής",
-    "exportEmbedScene_details": "Τα δεδομένα σκηνής θα αποθηκευτούν στο αρχείο PNG/SVG προς εξαγωγή ώστε η σκηνή να είναι δυνατό να αποκατασταθεί από αυτό.\nΘα αυξήσει το μέγεθος του αρχείου προς εξαγωγή.",
     "addWatermark": "Προσθήκη \"Φτιαγμένο με Excalidraw\"",
     "handDrawn": "Σχεδιασμένο στο χέρι",
     "normal": "Κανονική",
@@ -100,7 +96,6 @@
     "flipHorizontal": "Οριζόντια αναστροφή",
     "flipVertical": "Κατακόρυφη αναστροφή",
     "viewMode": "Λειτουργία προβολής",
-    "toggleExportColorScheme": "Εναλλαγή εξαγωγής θέματος χρωμάτων",
     "share": "Κοινοποίηση",
     "showStroke": "Εμφάνιση επιλογέα χρωμάτων πινελιάς",
     "showBackground": "Εμφάνιση επιλογέα χρώματος φόντου",
@@ -114,8 +109,12 @@
     "createContainerFromText": "",
     "link": {
       "edit": "Επεξεργασία συνδέσμου",
+      "editEmbed": "",
       "create": "Δημιουργία συνδέσμου",
-      "label": "Σύνδεσμος"
+      "createEmbed": "",
+      "label": "Σύνδεσμος",
+      "labelEmbed": "",
+      "empty": ""
     },
     "lineEditor": {
       "edit": "Επεξεργασία γραμμής",
@@ -128,7 +127,10 @@
       "unlockAll": "Ξεκλείδωμα όλων"
     },
     "statusPublished": "Δημοσιευμένο",
-    "sidebarLock": "Κρατήστε την πλαϊνή μπάρα ανοιχτή"
+    "sidebarLock": "Κρατήστε την πλαϊνή μπάρα ανοιχτή",
+    "selectAllElementsInFrame": "",
+    "removeAllElementsFromFrame": "",
+    "eyeDropper": ""
   },
   "library": {
     "noItems": "Δεν έχουν προστεθεί αντικείμενα ακόμη...",
@@ -140,11 +142,7 @@
     "exportJSON": "Εξαγωγή σε αρχείο",
     "exportImage": "Εξαγωγή εικόνας...",
     "export": "Αποθήκευση ως...",
-    "exportToPng": "Εξαγωγή σε PNG",
-    "exportToSvg": "Εξαγωγή σε SVG",
     "copyToClipboard": "Αντιγραφή στο πρόχειρο",
-    "copyPngToClipboard": "Αντιγραφή PNG στο πρόχειρο",
-    "scale": "Κλίμακα",
     "save": "Αποθήκευση στο τρέχον αρχείο",
     "saveAs": "Αποθήκευση ως",
     "load": "Άνοιγμα",
@@ -166,13 +164,16 @@
     "darkMode": "Σκοτεινή λειτουργία",
     "lightMode": "Φωτεινή λειτουργία",
     "zenMode": "Λειτουργία Zεν",
+    "objectsSnapMode": "",
     "exitZenMode": "Έξοδος από την λειτουργία Zen",
     "cancel": "Ακύρωση",
     "clear": "Καθαρισμός",
     "remove": "Κατάργηση",
+    "embed": "",
     "publishLibrary": "Δημοσίευση",
     "submit": "Υποβολή",
-    "confirm": "Επιβεβαίωση"
+    "confirm": "Επιβεβαίωση",
+    "embeddableInteractionButton": ""
   },
   "alerts": {
     "clearReset": "Αυτό θα σβήσει ολόκληρο τον καμβά. Είσαι σίγουρος;",
@@ -202,6 +203,7 @@
     "imageInsertError": "Αδυναμία εισαγωγής εικόνας. Προσπαθήστε ξανά αργότερα...",
     "fileTooBig": "Το αρχείο είναι πολύ μεγάλο. Το μέγιστο επιτρεπόμενο μέγεθος είναι {{maxSize}}.",
     "svgImageInsertError": "Αδυναμία εισαγωγής εικόνας SVG. Η σήμανση της SVG δεν φαίνεται έγκυρη.",
+    "failedToFetchImage": "",
     "invalidSVGString": "Μη έγκυρο SVG.",
     "cannotResolveCollabServer": "Αδυναμία σύνδεσης με τον διακομιστή συνεργασίας. Παρακαλώ ανανεώστε τη σελίδα και προσπαθήστε ξανά.",
     "importLibraryError": "Αδυναμία φόρτωσης βιβλιοθήκης",
@@ -212,6 +214,10 @@
       "line2": "",
       "line3": "",
       "line4": ""
+    },
+    "libraryElementTypeError": {
+      "embeddable": "",
+      "image": ""
     }
   },
   "toolBar": {
@@ -229,7 +235,11 @@
     "penMode": "Λειτουργία μολυβιού - αποτροπή αφής",
     "link": "Προσθήκη/ Ενημέρωση συνδέσμου για ένα επιλεγμένο σχήμα",
     "eraser": "Γόμα",
-    "hand": ""
+    "frame": "",
+    "embeddable": "",
+    "laser": "",
+    "hand": "",
+    "extraTools": ""
   },
   "headings": {
     "canvasActions": "Ενέργειες καμβά",
@@ -241,6 +251,7 @@
     "linearElement": "Κάνε κλικ για να ξεκινήσεις πολλαπλά σημεία, σύρε για μια γραμμή",
     "freeDraw": "Κάντε κλικ και σύρτε, απελευθερώσατε όταν έχετε τελειώσει",
     "text": "Tip: μπορείτε επίσης να προσθέστε κείμενο με διπλό-κλικ οπουδήποτε με το εργαλείο επιλογών",
+    "embeddable": "",
     "text_selected": "Κάντε διπλό κλικ ή πατήστε ENTER για να επεξεργαστείτε το κείμενο",
     "text_editing": "Πατήστε Escape ή CtrlOrCmd+ENTER για να ολοκληρώσετε την επεξεργασία",
     "linearElementMulti": "Κάνε κλικ στο τελευταίο σημείο ή πάτησε Escape ή Enter για να τελειώσεις",
@@ -256,7 +267,8 @@
     "bindTextToElement": "Πατήστε Enter για προσθήκη κειμένου",
     "deepBoxSelect": "Κρατήστε πατημένο το CtrlOrCmd για να επιλέξετε βαθιά, και να αποτρέψετε τη μεταφορά",
     "eraserRevert": "Κρατήστε πατημένο το Alt για να επαναφέρετε τα στοιχεία που σημειώθηκαν για διαγραφή",
-    "firefox_clipboard_write": "Αυτή η επιλογή μπορεί πιθανώς να ενεργοποιηθεί αλλάζοντας την ρύθμιση \"dom.events.asyncClipboard.clipboardItem\" σε \"true\". Για να αλλάξετε τις ρυθμίσεις του προγράμματος περιήγησης στο Firefox, επισκεφθείτε τη σελίδα \"about:config\"."
+    "firefox_clipboard_write": "Αυτή η επιλογή μπορεί πιθανώς να ενεργοποιηθεί αλλάζοντας την ρύθμιση \"dom.events.asyncClipboard.clipboardItem\" σε \"true\". Για να αλλάξετε τις ρυθμίσεις του προγράμματος περιήγησης στο Firefox, επισκεφθείτε τη σελίδα \"about:config\".",
+    "disableSnapping": ""
   },
   "canvasError": {
     "cannotShowPreview": "Αδυναμία εμφάνισης προεπισκόπησης",
@@ -363,6 +375,30 @@
     "resetLibrary": "Καθαρισμός βιβλιοθήκης",
     "removeItemsFromLib": "Αφαίρεση επιλεγμένων αντικειμένων από τη βιβλιοθήκη"
   },
+  "imageExportDialog": {
+    "header": "",
+    "label": {
+      "withBackground": "",
+      "onlySelected": "",
+      "darkMode": "",
+      "embedScene": "",
+      "scale": "",
+      "padding": ""
+    },
+    "tooltip": {
+      "embedScene": ""
+    },
+    "title": {
+      "exportToPng": "",
+      "exportToSvg": "",
+      "copyPngToClipboard": ""
+    },
+    "button": {
+      "exportToPng": "",
+      "exportToSvg": "",
+      "copyPngToClipboard": ""
+    }
+  },
   "encrypted": {
     "tooltip": "Τα σχέδιά σου είναι κρυπτογραφημένα από άκρο σε άκρο, έτσι δεν θα είναι ποτέ ορατά μέσα από τους διακομιστές του Excalidraw.",
     "link": "Blog post στην κρυπτογράφηση end-to-end στο Excalidraw"
@@ -391,7 +427,9 @@
     "fileSavedToFilename": "Αποθηκεύτηκε στο {filename}",
     "canvas": "καμβάς",
     "selection": "επιλογή",
-    "pasteAsSingleElement": "Χρησιμοποίησε το {{shortcut}} για να επικολλήσεις ως ένα μόνο στοιχείο,\nή να επικολλήσεις σε έναν υπάρχοντα επεξεργαστή κειμένου"
+    "pasteAsSingleElement": "Χρησιμοποίησε το {{shortcut}} για να επικολλήσεις ως ένα μόνο στοιχείο,\nή να επικολλήσεις σε έναν υπάρχοντα επεξεργαστή κειμένου",
+    "unableToEmbed": "",
+    "unrecognizedLinkFormat": ""
   },
   "colors": {
     "transparent": "Διαφανές",
@@ -429,5 +467,36 @@
     "shades": "Αποχρώσεις",
     "hexCode": "Κωδικός Hex",
     "noShades": "Δεν υπάρχουν διαθέσιμες αποχρώσεις για αυτό το χρώμα"
+  },
+  "overwriteConfirm": {
+    "action": {
+      "exportToImage": {
+        "title": "",
+        "button": "",
+        "description": ""
+      },
+      "saveToDisk": {
+        "title": "",
+        "button": "",
+        "description": ""
+      },
+      "excalidrawPlus": {
+        "title": "",
+        "button": "",
+        "description": ""
+      }
+    },
+    "modal": {
+      "loadFromFile": {
+        "title": "",
+        "button": "",
+        "description": ""
+      },
+      "shareableLink": {
+        "title": "",
+        "button": "",
+        "description": ""
+      }
+    }
   }
 }
